@@ -48,7 +48,7 @@ bool IsFull(queue_t queue)
 
 bool IsEmpty(queue_t queue)
 {
-    return GetLength(queue) <= 0;
+    return queue->front == NULL;
 }
 
 bool Add(queue_t queue, element_t x)

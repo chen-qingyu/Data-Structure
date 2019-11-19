@@ -39,7 +39,7 @@ bool IsFull(list_t list)
 
 bool IsEmpty(list_t list)
 {
-    return GetLength(list) <= 0;
+    return list->next == NULL;
 }
 
 item_t FindByIndex(int i, list_t list)

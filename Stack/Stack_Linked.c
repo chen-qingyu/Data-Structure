@@ -39,11 +39,17 @@ bool IsFull(stack_t stack)
 
 bool IsEmpty(stack_t stack)
 {
-    return GetLength(stack) <= 0;
+    return stack->next == NULL;
 }
 
 bool Push(stack_t stack, element_t x)
 {
+    if (IsFull(stack))
+    {
+        printf("The stack is full.\n");
+        return false;
+    }
+
     stack_t top = (stack_t)malloc(sizeof(struct stack));
     if (top == NULL)
     {
