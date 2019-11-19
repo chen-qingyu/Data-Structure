@@ -6,10 +6,10 @@
     2. int GetLength(list_t list)
     3. bool IsFull(list_t list)
     4. bool IsEmpty(list_t list)
-    5. item_t FindByIndex(int i, list_t list)
-    6. int Find(item_t data, list_t list)
-    7. bool Insert(item_t data, int i, list_t list)
-    8. bool Delete(int i, list_t list)
+    5. item_t FindByIndex(list_t list, int i)
+    6. int Find(list_t list, item_t data)
+    7. bool Insert(list_t list, int i, item_t data)
+    8. bool Delete(list_t list, int i)
     9. void Print(list_t list)
    10. bool LinkList(list_t list1, list_t list2)
 */
@@ -21,7 +21,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
-#include <time.h>
 
 #define SIZE 100
 #define ERROR (-1)
@@ -34,10 +33,10 @@ list_t CreateList(void);
 int GetLength(list_t list);
 bool IsFull(list_t list);
 bool IsEmpty(list_t list);
-item_t FindByIndex(int i, list_t list);
-int Find(item_t data, list_t list);
-bool Insert(item_t data, int i, list_t list);
-bool Delete(int i, list_t list);
+item_t FindByIndex(list_t list, int i);
+int Find(list_t list, item_t data);
+bool Insert(list_t list, int i, item_t data);
+bool Delete(list_t list, int i);
 void Print(list_t list);
 bool LinkList(list_t list1, list_t list2);
 

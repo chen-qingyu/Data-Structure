@@ -2,7 +2,7 @@
 
 struct stack
 {
-    element_t data[SIZE];
+    item_t data[SIZE];
     int top;
 };
 
@@ -11,7 +11,7 @@ stack_t CreateStack(void)
     stack_t stack = (stack_t)malloc(sizeof(struct stack));
     if (stack == NULL)
     {
-        fprintf(stderr, "Failed to create new stack.\n");
+        fprintf(stderr, "ERROR: There was not enough memory.\n");
         exit(-2);
     }
 
@@ -35,7 +35,7 @@ bool IsEmpty(stack_t stack)
     return GetLength(stack) <= 0;
 }
 
-bool Push(stack_t stack, element_t x)
+bool Push(stack_t stack, item_t data)
 {
     if (IsFull(stack))
     {
@@ -43,11 +43,11 @@ bool Push(stack_t stack, element_t x)
         return false;
     }
 
-    stack->data[++(stack->top)] = x;
+    stack->data[++(stack->top)] = data;
     return true;
 }
 
-element_t Pop(stack_t stack)
+item_t Pop(stack_t stack)
 {
     if (IsEmpty(stack))
     {

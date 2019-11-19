@@ -42,7 +42,7 @@ bool IsEmpty(list_t list)
     return list->next == NULL;
 }
 
-item_t FindByIndex(int i, list_t list)
+item_t FindByIndex(list_t list, int i)
 {
     if (i < 0 || i > (GetLength(list) - 1))
     {
@@ -67,7 +67,7 @@ item_t FindByIndex(int i, list_t list)
     }
 }
 
-int Find(item_t data, list_t list)
+int Find(list_t list, item_t data)
 {
     int index = 0;
     list_t current = list->next;
@@ -86,7 +86,7 @@ int Find(item_t data, list_t list)
     }
 }
 
-bool Insert(item_t data, int i, list_t list)
+bool Insert(list_t list, int i, item_t data)
 {
     if (IsFull(list))
     {
@@ -115,11 +115,10 @@ bool Insert(item_t data, int i, list_t list)
     new->data = data;
     new->next = tmp->next;
     tmp->next = new;
-    printf("Insert element %d at list[%d] successful.\n", data, i);
     return true;
 }
 
-bool Delete(int i, list_t list)
+bool Delete(list_t list, int i)
 {
     if (IsEmpty(list))
     {
@@ -141,7 +140,6 @@ bool Delete(int i, list_t list)
     list_t del = tmp->next;
     tmp->next = del->next;
     free(del);
-    printf("Delete element at list[%d] successful.\n", i);
     return true;
 }
 
@@ -151,7 +149,7 @@ void Print(list_t list)
     list_t tmp = list->next;
     for (int i = 0; i < GetLength(list); i++)
     {
-        printf("list[%d]: %d\n", i, tmp->data);
+        printf("%d: %d\n", i, tmp->data);
         tmp = tmp->next;
     }
     printf("That's all.\n");
@@ -159,22 +157,20 @@ void Print(list_t list)
 
 bool LinkList(list_t list1, list_t list2)
 {
+    if (list1 == list2)
+    {
+        printf("Do you want to make a circular linked list?\n");
+        return false;
+    }
+
     list_t tail = list1;
     while (tail->next != NULL)
     {
         tail = tail->next;
     }
     tail->next = list2->next;
-
-    if (list1 == list2)
-    {
-        printf("Make a circular linked list successful.\n");
-    }
-    else
-    {
-        free(list2);
-        list2 = NULL;
-        printf("Link list 1 and list 2 successful.\n");
-    }
+    free(list2);
+    list2 = NULL;
+    printf("Link list 1 and list 2 successful.\n");
     return true;
 }

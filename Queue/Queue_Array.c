@@ -2,7 +2,7 @@
 
 struct queue
 {
-    element_t data[SIZE + 1]; // 循环队列，数组容量为队列最大有效长度加一
+    item_t data[SIZE + 1]; // 循环队列，数组容量为队列最大有效长度加一
     int front;
     int rear;
 };
@@ -12,7 +12,7 @@ queue_t CreateQueue(void)
     queue_t queue = (queue_t)malloc(sizeof(struct queue));
     if (queue == NULL)
     {
-        fprintf(stderr, "Failed to create new queue.\n");
+        fprintf(stderr, "ERROR: There was not enough memory.\n");
         exit(-2);
     }
 
@@ -37,7 +37,7 @@ bool IsEmpty(queue_t queue)
     return GetLength(queue) <= 0;
 }
 
-bool Add(queue_t queue, element_t x)
+bool Add(queue_t queue, item_t data)
 {
     if (IsFull(queue))
     {
@@ -46,11 +46,11 @@ bool Add(queue_t queue, element_t x)
     }
 
     queue->rear = (queue->rear + 1) % SIZE;
-    queue->data[queue->rear] = x;
+    queue->data[queue->rear] = data;
     return true;
 }
 
-element_t Delete(queue_t queue)
+item_t Delete(queue_t queue)
 {
     if (IsEmpty(queue))
     {

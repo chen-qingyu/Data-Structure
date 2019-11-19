@@ -35,7 +35,7 @@ bool IsEmpty(list_t list)
     return GetLength(list) <= 0;
 }
 
-item_t FindByIndex(int i, list_t list)
+item_t FindByIndex(list_t list, int i)
 {
     if (i < 0 || i > list->last)
     {
@@ -46,7 +46,7 @@ item_t FindByIndex(int i, list_t list)
     return list->data[i];
 }
 
-int Find(item_t data, list_t list)
+int Find(list_t list, item_t data)
 {
     int index = 0;
     while (index <= list->last && list->data[index] != data)
@@ -63,7 +63,7 @@ int Find(item_t data, list_t list)
     }
 }
 
-bool Insert(item_t data, int i, list_t list)
+bool Insert(list_t list, int i, item_t data)
 {
     if (IsFull(list))
     {
@@ -83,11 +83,10 @@ bool Insert(item_t data, int i, list_t list)
     }
     list->data[i] = data;
     list->last++;
-    printf("Insert element %d at list[%d] successful.\n", data, i);
     return true;
 }
 
-bool Delete(int i, list_t list)
+bool Delete(list_t list, int i)
 {
     if (IsEmpty(list))
     {
@@ -106,7 +105,6 @@ bool Delete(int i, list_t list)
         list->data[j - 1] = list->data[j];
     }
     list->last--;
-    printf("Delete element at list[%d] successful.\n", i);
     return true;
 }
 
@@ -115,7 +113,7 @@ void Print(list_t list)
     printf("Now print the list elements:\n");
     for (int i = 0; i < GetLength(list); i++)
     {
-        printf("list[%d]: %d\n", i, list->data[i]);
+        printf("%d: %d\n", i, list->data[i]);
     }
     printf("That's all.\n");
 }

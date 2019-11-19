@@ -10,7 +10,7 @@ struct queue
 
 struct node
 {
-    element_t data;
+    item_t data;
     node_t next;
 };
 
@@ -19,7 +19,7 @@ queue_t CreateQueue(void)
     queue_t queue = (queue_t)malloc(sizeof(struct queue));
     if (queue == NULL)
     {
-        fprintf(stderr, "Failed to create new queue.\n");
+        fprintf(stderr, "ERROR: There was not enough memory.\n");
         exit(-2);
     }
 
@@ -51,7 +51,7 @@ bool IsEmpty(queue_t queue)
     return queue->front == NULL;
 }
 
-bool Add(queue_t queue, element_t x)
+bool Add(queue_t queue, item_t data)
 {
     if (IsFull(queue))
     {
@@ -62,11 +62,11 @@ bool Add(queue_t queue, element_t x)
     node_t add = (node_t)malloc(sizeof(struct node));
     if (add == NULL)
     {
-        fprintf(stderr, "Failed to create new node.\n");
+        fprintf(stderr, "ERROR: There was not enough memory.\n");
         exit(-2);
     }
 
-    add->data = x;
+    add->data = data;
     add->next = NULL;
     if (IsEmpty(queue))
     {
@@ -81,7 +81,7 @@ bool Add(queue_t queue, element_t x)
     return true;
 }
 
-element_t Delete(queue_t queue)
+item_t Delete(queue_t queue)
 {
     if (IsEmpty(queue))
     {
@@ -99,7 +99,7 @@ element_t Delete(queue_t queue)
     {
         queue->front = queue->front->next;
     }
-    element_t x = del->data;
+    item_t data = del->data;
     free(del);
-    return x;
+    return data;
 }
