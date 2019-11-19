@@ -1,55 +1,18 @@
-/*
-队列(Queue)
-不带头结点的单向链表实现
-对象集：有n(n>=0)个元素的有穷线性表
-操作集：队列 queue 属于 queue_t ，元素 x 属于 element_t ，基本操作有：
-    1. queue_t CreateQueue(void)
-    2. bool IsEmpty(queue_t queue)
-    3. bool Add(queue_t queue, element_t x)
-    4. element_t Delete(queue_t queue)
-*/
+#include "Queue.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <math.h>
-#include <time.h>
-
-#define ERROR (-1)
-
-typedef int element_t;
 typedef struct node * node_t;
-typedef struct queue * queue_t;
 
-struct node
-{
-    element_t data;
-    node_t next;
-};
 struct queue
 {
     node_t front;
     node_t rear;
 };
 
-queue_t CreateQueue(void);
-bool IsEmpty(queue_t queue);
-bool Add(queue_t queue, element_t x);
-element_t Delete(queue_t queue);
-
-int main(int argc, char const *argv[])
+struct node
 {
-    queue_t queue = CreateQueue();
-    element_t x = 233;
-    printf("The queue is empty? %s.\n", IsEmpty(queue) ? "yes" : "no");
-    printf("Add a element: %d.\n", x);
-    Add(queue, x);
-    printf("The queue is empty? %s.\n", IsEmpty(queue) ? "yes" : "no");
-    printf("Delete the element: %d.\n", Delete(queue));
-    printf("The queue is empty? %s.\n", IsEmpty(queue) ? "yes" : "no");
-    getchar();
-    return 0;
-}
+    element_t data;
+    node_t next;
+};
 
 queue_t CreateQueue(void)
 {
@@ -66,13 +29,36 @@ queue_t CreateQueue(void)
     return queue;
 }
 
+int GetLength(queue_t queue)
+{
+    node_t current = queue->front;
+    int length = 0;
+    while (current)
+    {
+        current = current->next;
+        length++;
+    }
+    return length;
+}
+
+bool IsFull(queue_t queue)
+{
+    return GetLength(queue) >= SIZE;
+}
+
 bool IsEmpty(queue_t queue)
 {
-    return queue->front == NULL;
+    return GetLength(queue) <= 0;
 }
 
 bool Add(queue_t queue, element_t x)
 {
+    if (IsFull(queue))
+    {
+        printf("The queue is full.\n");
+        return false;
+    }
+
     node_t add = (node_t)malloc(sizeof(struct node));
     if (add == NULL)
     {
