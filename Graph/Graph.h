@@ -8,6 +8,7 @@
     4. void Visit(vertex_t V);
     5. void DFS(graph_t G, vertex_t V);
     6. void BFS(graph_t G, vertex_t V);
+    7. void CleanFlag(void);
 */
 
 #ifndef GRAPH_H
@@ -18,7 +19,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-#define VERTEX_NUMBER 6
+#define VERTEX_NUMBER 10
 #define ERROR (-1)
 
 typedef int vertex_t; // 结点
@@ -41,5 +42,6 @@ bool IsAdjacent(graph_t G, vertex_t V1, vertex_t V2);
 void Visit(vertex_t V);
 void DFS(graph_t G, vertex_t V);
 void BFS(graph_t G, vertex_t V);
+void CleanFlag(void);
 
 #endif

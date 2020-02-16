@@ -43,6 +43,14 @@ void Visit(vertex_t V)
     printf("Visiting vertex: %d\n", V);
 }
 
+void CleanFlag(void)
+{
+    for (int i = 0; i < VERTEX_NUMBER; i++)
+    {
+        visited[i] = false;
+    }
+}
+
 void BFS(graph_t G, vertex_t startV)
 {
     queue_t Q = CreateQueue();
