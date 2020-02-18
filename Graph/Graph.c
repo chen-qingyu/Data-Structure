@@ -134,7 +134,6 @@ bool Dijkstra(graph_t G, int dist[], int path[], vertex_t startV)
 
     while (1)
     {
-
         V1 = FindMinDist(G, dist, collected);
         if (V1 == ERROR)
         {
