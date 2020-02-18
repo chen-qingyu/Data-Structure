@@ -17,10 +17,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <math.h>
 
-#define VERTEX_NUMBER 10
+#define VERTEX_NUMBER 7
 #define ERROR (-1)
+#define INFINITY 0xFFFF
+
+// #define UNDIRECTED
 
 typedef int vertex_t; // 结点
 
@@ -43,5 +45,7 @@ void Visit(vertex_t V);
 void DFS(graph_t G, vertex_t V);
 void BFS(graph_t G, vertex_t V);
 void CleanFlag(void);
+bool Dijkstra(graph_t G, int dist[], int path[], vertex_t startV);
+bool Floyd(graph_t G, weight_t D[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER]);
 
 #endif

@@ -20,7 +20,7 @@ graph_t CreateGraph(void)
     {
         for (V2 = 0; V2 < G->vertexNum; V2++)
         {
-            G->matrix[V1][V2] = 0;
+            G->matrix[V1][V2] = INFINITY;
         }
     }
 
@@ -30,12 +30,14 @@ graph_t CreateGraph(void)
 void Link(graph_t G, vertex_t V1, vertex_t V2, weight_t weight)
 {
     G->matrix[V1][V2] = weight;
+#ifdef UNDIRECTED
     G->matrix[V2][V1] = weight;
+#endif
 }
 
 bool IsAdjacent(graph_t G, vertex_t V1, vertex_t V2)
 {
-    return G->matrix[V1][V2] != 0 ? true : false;
+    return G->matrix[V1][V2] != INFINITY ? true : false;
 }
 
 void Visit(vertex_t V)
@@ -89,4 +91,105 @@ void DFS(graph_t G, vertex_t startV)
             DFS(G, V2);
         }
     }
+}
+
+vertex_t FindMinDist(graph_t G, int dist[], int collected[])
+{
+    vertex_t MinV, V;
+    int minDist = INFINITY;
+
+    for (V = 0; V < G->vertexNum; V++)
+    {
+        if (collected[V] == false && dist[V] < minDist)
+        {
+            minDist = dist[V];
+            MinV = V;
+        }
+    }
+
+    return (minDist < INFINITY) ? MinV : ERROR;
+}
+
+bool Dijkstra(graph_t G, int dist[], int path[], vertex_t startV)
+{
+    int collected[VERTEX_NUMBER];
+    vertex_t V1, V2;
+
+    for (V1 = 0; V1 < G->vertexNum; V1++)
+    {
+        dist[V1] = G->matrix[startV][V1];
+        if (dist[V1] < INFINITY)
+        {
+            path[V1] = startV;
+        }
+        else
+        {
+            path[V1] = -1;
+        }
+        collected[V1] = false;
+    }
+
+    dist[startV] = 0;
+    collected[startV] = true;
+
+    while (1)
+    {
+
+        V1 = FindMinDist(G, dist, collected);
+        if (V1 == ERROR)
+        {
+            break;
+        }
+        collected[V1] = true;
+        for (V2 = 0; V2 < G->vertexNum; V2++)
+        {
+            if (collected[V2] == false && G->matrix[V1][V2] < INFINITY)
+            {
+                if (G->matrix[V1][V2] < 0)
+                {
+                    return false;
+                }
+                if (dist[V1] + G->matrix[V1][V2] < dist[V2])
+                {
+                    dist[V2] = dist[V1] + G->matrix[V1][V2];
+                    path[V2] = V1;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+bool Floyd(graph_t G, weight_t D[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER])
+{
+    vertex_t i, j, k;
+
+    for (i = 0; i < G->vertexNum; i++)
+    {
+        for (j = 0; j < G->vertexNum; j++)
+        {
+            D[i][j] = G->matrix[i][j];
+            path[i][j] = -1;
+        }
+    }
+
+    for (k = 0; k < G->vertexNum; k++)
+    {
+        for (i = 0; i < G->vertexNum; i++)
+        {
+            for (j = 0; j < G->vertexNum; j++)
+            {
+                if (D[i][k] + D[k][j] < D[i][j])
+                {
+                    D[i][j] = D[i][k] + D[k][j];
+                    if (i == j && D[i][j] < 0)
+                    {
+                        return false;
+                    }
+                    path[i][j] = k;
+                }
+            }
+        }
+    }
+    return true;
 }

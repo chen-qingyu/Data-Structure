@@ -1,5 +1,5 @@
 /*
-二叉树(BinaryTree)
+二叉搜索树(BinarySearchTree)
 对象集：一个有穷的结点集合。若不为空，则由根结点和其左、右二叉子树组成。
 操作集：二叉树 tree 属于 tree_t，元素 data 属于 item_t ，基本操作有：
     1. tree_t CreateTree(void)
