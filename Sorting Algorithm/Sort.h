@@ -8,11 +8,13 @@
 #define SIZE 100
 #define Sedgewick_SIZE 10
 
-void Bubble_Sort(double arr[], int n);
-void Insertion_Sort(double arr[], int n);
-void Shell_Sort(double arr[], int n);
-void Selection_Sort(double arr[], int n);
-void Heap_Sort(double arr[], int n);
-void Merge_Sort(double arr[], int n);
+typedef double item_t;
+
+void Bubble_Sort(item_t arr[], int n);
+void Insertion_Sort(item_t arr[], int n);
+void Shell_Sort(item_t arr[], int n);
+void Selection_Sort(item_t arr[], int n);
+void Heap_Sort(item_t arr[], int n);
+void Merge_Sort(item_t arr[], int n);
 
 #endif

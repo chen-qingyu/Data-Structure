@@ -2,9 +2,9 @@
 
 int main(void)
 {
-    double arr[SIZE];
+    item_t arr[SIZE];
     int n = 0;
-    printf("Please enter the data to be sorted:\n");
+    printf("Please input the data to be sorted:\n");
     while (scanf("%lf", &arr[n]) && n < SIZE)
     {
         n++;
@@ -26,11 +26,11 @@ int main(void)
     return 0;
 }
 
-void PercDown(double arr[], int r, int n)
+void PercDown(item_t arr[], int r, int n)
 {
     /* 将n个元素的数组中以arr[r]为根的子堆调整为最大堆 */
     int parent, child;
-    double tmp;
+    item_t tmp;
 
     tmp = arr[r];
     for (parent = r; (parent * 2 + 1) < n; parent = child)
@@ -52,7 +52,7 @@ void PercDown(double arr[], int r, int n)
     arr[parent] = tmp;
 }
 
-void Heap_Sort(double arr[], int n)
+void Heap_Sort(item_t arr[], int n)
 {
     for (int i = n / 2 - 1; i >= 0; i--)
     {
@@ -61,7 +61,7 @@ void Heap_Sort(double arr[], int n)
 
     for (int i = n - 1; i > 0; i--)
     {
-        double tmp = arr[0];
+        item_t tmp = arr[0];
         arr[0] = arr[i];
         arr[i] = tmp;
 

@@ -2,9 +2,9 @@
 
 int main(void)
 {
-    double arr[SIZE];
+    item_t arr[SIZE];
     int n = 0;
-    printf("Please enter the data to be sorted:\n");
+    printf("Please input the data to be sorted:\n");
     while (scanf("%lf", &arr[n]) && n < SIZE)
     {
         n++;
@@ -26,7 +26,7 @@ int main(void)
     return 0;
 }
 
-void Merge(double arr[], double tmpArr[], int left, int mid, int right)
+void Merge(item_t arr[], item_t tmpArr[], int left, int mid, int right)
 {
     int tmp = left;
     int start = left, end = right;
@@ -59,7 +59,7 @@ void Merge(double arr[], double tmpArr[], int left, int mid, int right)
     }
 }
 
-void Merge_Pass(double arr[], double tmpArr[], int n, int length)
+void Merge_Pass(item_t arr[], item_t tmpArr[], int n, int length)
 {
     int i;
 
@@ -81,10 +81,10 @@ void Merge_Pass(double arr[], double tmpArr[], int n, int length)
     }
 }
 
-void Merge_Sort(double arr[], int n)
+void Merge_Sort(item_t arr[], int n)
 {
     int length = 1;
-    double *tmpArr = malloc(n * sizeof(double));
+    item_t *tmpArr = malloc(n * sizeof(item_t));
     if (tmpArr != NULL)
     {
         while (length < n)

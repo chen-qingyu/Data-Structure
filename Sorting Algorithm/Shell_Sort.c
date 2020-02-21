@@ -2,9 +2,9 @@
 
 int main(void)
 {
-    double arr[SIZE];
+    item_t arr[SIZE];
     int n = 0;
-    printf("Please enter the data to be sorted:\n");
+    printf("Please input the data to be sorted:\n");
     while (scanf("%lf", &arr[n]) && n < SIZE)
     {
         n++;
@@ -37,12 +37,12 @@ int *Sedgewick(int n)
     return sedgewick; // {s[0]=1, s[1]=5, s[2]=19, s[3]=41, ..., s[9]}
 }
 
-void Shell_Sort(double arr[], int n)
+void Shell_Sort(item_t arr[], int n)
 {
     int *sedgewick = Sedgewick(n);
 
     int i, j, si;
-    double tmp;
+    item_t tmp;
 
     for (si = Sedgewick_SIZE - 1; sedgewick[si] >= n; si--)
         ;

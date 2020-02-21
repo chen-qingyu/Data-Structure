@@ -2,9 +2,9 @@
 
 int main(void)
 {
-    double arr[SIZE];
+    item_t arr[SIZE];
     int n = 0;
-    printf("Please enter the data to be sorted:\n");
+    printf("Please input the data to be sorted:\n");
     while (scanf("%lf", &arr[n]) && n < SIZE)
     {
         n++;
@@ -26,10 +26,10 @@ int main(void)
     return 0;
 }
 
-void Bubble_Sort(double arr[], int n)
+void Bubble_Sort(item_t arr[], int n)
 {
     int flag;
-    double tmp;
+    item_t tmp;
     for (int i = 1; i < n; i++)
     {
         flag = 0;

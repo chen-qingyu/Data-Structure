@@ -2,9 +2,9 @@
 
 int main(void)
 {
-    double arr[SIZE];
+    item_t arr[SIZE];
     int n = 0;
-    printf("Please enter the data to be sorted:\n");
+    printf("Please input the data to be sorted:\n");
     while (scanf("%lf", &arr[n]) && n < SIZE)
     {
         n++;
@@ -26,7 +26,7 @@ int main(void)
     return 0;
 }
 
-void Selection_Sort(double arr[], int n)
+void Selection_Sort(item_t arr[], int n)
 {
     for (int i = 0; i < n - 1; i++)
     {
@@ -40,7 +40,7 @@ void Selection_Sort(double arr[], int n)
         }
         if (minPosition != i)
         {
-            double tmp = arr[i];
+            item_t tmp = arr[i];
             arr[i] = arr[minPosition];
             arr[minPosition] = tmp;
         }
