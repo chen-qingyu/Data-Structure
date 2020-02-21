@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <math.h>
-
-#define SIZE 100
-#define Sedgewick_SIZE 10
-
-void Shell_Sort(double arr[], int n);
+#include "Sort.h"
 
 int main(void)
 {

@@ -1,8 +1,4 @@
-#include <stdio.h>
-
-#define SIZE 100
-
-void Bubble_Sort(double arr[], int n);
+#include "Sort.h"
 
 int main(void)
 {

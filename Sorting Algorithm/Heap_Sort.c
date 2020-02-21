@@ -1,8 +1,4 @@
-#include <stdio.h>
-
-#define SIZE 100
-
-void Heap_Sort(double arr[], int n);
+#include "Sort.h"
 
 int main(void)
 {
