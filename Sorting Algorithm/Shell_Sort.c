@@ -34,7 +34,7 @@ int *Sedgewick(int n)
         sedgewick[i] = 9 * pow(4, i) - 9 * pow(2, i) + 1;
         sedgewick[i + 1] = pow(4, i + 2) - 3 * pow(2, i + 2) + 1;
     }
-    return sedgewick; // {s[0]=1, s[1]=5, s[2]=19, s[3]=41, ..., s[9]}
+    return sedgewick; // {s[0]=1, s[1]=5, s[2]=19, s[3]=41, ..., s[Sedgewick_SIZE-1]}
 }
 
 void Shell_Sort(item_t arr[], int n)
