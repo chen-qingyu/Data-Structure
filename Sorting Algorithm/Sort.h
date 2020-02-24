@@ -7,7 +7,7 @@
 
 #define SIZE 100          // Maximum number of elements
 #define Sedgewick_SIZE 10 // For Shell_Sort()
-#define CUTOFF 3          // For Quick_Sort()
+#define CUTOFF 50         // For Quick_Sort()
 
 typedef double item_t;
 
