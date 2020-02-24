@@ -5,7 +5,7 @@ int main(void)
     item_t arr[SIZE];
     int n = 0;
     printf("Please input the data to be sorted:\n");
-    while (scanf("%lf", &arr[n]) && n < SIZE)
+    while (n < SIZE && scanf("%lf", &arr[n]))
     {
         n++;
         if (getchar() == '\n')
