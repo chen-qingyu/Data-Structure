@@ -59,6 +59,7 @@ void Radix_Sort(item_t arr[], int n)
         if (arr[i] < 0)
         {
             negativeFlag = 1;
+            break;
         }
     }
 
