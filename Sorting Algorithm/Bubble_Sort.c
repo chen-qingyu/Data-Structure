@@ -40,7 +40,7 @@ void Bubble_Sort(item_t arr[], int n)
                 tmp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = tmp;
-                flag = 1; // 标识发生了交换
+                flag = 1; // Identity swapped
             }
         }
         if (flag == 0)
