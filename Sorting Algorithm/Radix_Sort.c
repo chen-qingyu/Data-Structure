@@ -117,7 +117,8 @@ void Radix_Sort(item_t arr[], int n)
                 {
                     bucket[digit].tail->next = list;
                     list = bucket[digit].head;
-                    bucket[digit].head = bucket[digit].tail = NULL;
+                    bucket[digit].head = NULL;
+                    bucket[digit].tail = NULL;
                 }
             }
         }
