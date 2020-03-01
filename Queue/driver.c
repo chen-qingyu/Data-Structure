@@ -1,6 +1,6 @@
 #include "Queue.h"
 
-int main(int argc, char const *argv[])
+int main(void)
 {
     queue_t queue = CreateQueue();
     item_t a[] = {1, 2, 3, 4};

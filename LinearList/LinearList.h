@@ -1,6 +1,6 @@
 /*
 线性表(Linear List)
-对象集：n(n>=0)个元素构成的有序序列 a1, a2, a3 ... an
+对象集：n(n>=0)个元素构成的有序序列 a1, a2, a3 ... an.
 操作集：线性表 list 属于 list_t ，整数 i 表示元素下标(从0开始)，元素 data 属于 item_t ，基本操作有：
     1. list_t CreateList(void)
     2. int GetLength(list_t list)
@@ -22,8 +22,9 @@
 #include <stdbool.h>
 #include <math.h>
 
-#define SIZE 100
 #define ERROR (-1)
+
+#define SIZE 100
 
 typedef int item_t;
 

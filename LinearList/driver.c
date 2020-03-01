@@ -1,6 +1,6 @@
 #include "LinearList.h"
 
-int main(int argc, char const *argv[])
+int main(void)
 {
     list_t list1 = CreateList(), list2 = CreateList();
     item_t a[] = {1, 2, 3, 4}, b[] = {233, 666, 888, 999};

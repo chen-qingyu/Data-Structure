@@ -16,7 +16,7 @@ stack_t CreateStack(void)
     }
 
     stack->top = -1;
-    printf("Create a new stack successful.\n");
+
     return stack;
 }
 
@@ -39,11 +39,12 @@ bool Push(stack_t stack, item_t data)
 {
     if (IsFull(stack))
     {
-        printf("The stack is full.\n");
+        fprintf(stderr, "The stack is full.\n");
         return false;
     }
 
     stack->data[++(stack->top)] = data;
+
     return true;
 }
 
@@ -51,7 +52,7 @@ item_t Pop(stack_t stack)
 {
     if (IsEmpty(stack))
     {
-        printf("The stack is empty.\n");
+        fprintf(stderr, "The stack is empty.\n");
         return ERROR;
     }
 

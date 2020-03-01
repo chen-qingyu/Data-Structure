@@ -18,8 +18,9 @@
 #include <stdbool.h>
 #include <math.h>
 
-#define SIZE 100
 #define ERROR (-1)
+
+#define SIZE 100
 
 typedef int item_t;
 

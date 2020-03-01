@@ -26,6 +26,7 @@ int main(void)
     printf("\n");
 
     Delete(table, "aaa");
+    printf("Delete \"aaa\".\n");
     a = Find(table, "aaa");
     if (a == ERROR)
     {

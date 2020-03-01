@@ -3,10 +3,12 @@
 int Hash(key_t key)
 {
     unsigned int index = 0;
+
     while (*key != '\0')
     {
         index = (index << 5) + *key++;
     }
+
     return index % SIZE;
 }
 
@@ -23,6 +25,7 @@ table_t CreateTable(void)
     {
         table[i].state = EMPTY;
     }
+
     return table;
 }
 

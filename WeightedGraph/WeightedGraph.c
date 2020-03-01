@@ -1,4 +1,4 @@
-#include "Graph.h"
+#include "WeightedGraph.h"
 
 bool visited[VERTEX_NUMBER] = {false};
 
@@ -11,14 +11,12 @@ graph_t CreateGraph(void)
         exit(-2);
     }
 
-    vertex_t V1, V2;
-
     G->vertexNum = VERTEX_NUMBER;
     G->edgeNum = 0;
 
-    for (V1 = 0; V1 < G->vertexNum; V1++)
+    for (vertex_t V1 = 0; V1 < G->vertexNum; V1++)
     {
-        for (V2 = 0; V2 < G->vertexNum; V2++)
+        for (vertex_t V2 = 0; V2 < G->vertexNum; V2++)
         {
             G->matrix[V1][V2] = INFINITY;
         }
@@ -27,11 +25,11 @@ graph_t CreateGraph(void)
     return G;
 }
 
-void Link(graph_t G, vertex_t V1, vertex_t V2, weight_t weight)
+void Link(graph_t G, vertex_t V1, vertex_t V2, edge_t E)
 {
-    G->matrix[V1][V2] = weight;
+    G->matrix[V1][V2] = E;
 #ifdef UNDIRECTED
-    G->matrix[V2][V1] = weight;
+    G->matrix[V2][V1] = E;
 #endif
 }
 
@@ -47,7 +45,7 @@ void Visit(vertex_t V)
 
 void CleanFlag(void)
 {
-    for (int i = 0; i < VERTEX_NUMBER; i++)
+    for (vertex_t i = 0; i < VERTEX_NUMBER; i++)
     {
         visited[i] = false;
     }
@@ -93,7 +91,7 @@ void DFS(graph_t G, vertex_t startV)
     }
 }
 
-vertex_t FindMinDist(graph_t G, int dist[], int collected[])
+vertex_t FindMinDist(graph_t G, edge_t dist[], bool collected[])
 {
     vertex_t MinV, V;
     int minDist = INFINITY;
@@ -110,9 +108,9 @@ vertex_t FindMinDist(graph_t G, int dist[], int collected[])
     return (minDist < INFINITY) ? MinV : ERROR;
 }
 
-bool Dijkstra(graph_t G, int dist[], int path[], vertex_t startV)
+bool Dijkstra(graph_t G, edge_t dist[], vertex_t path[], vertex_t startV)
 {
-    int collected[VERTEX_NUMBER];
+    bool collected[VERTEX_NUMBER] = {false};
     vertex_t V1, V2;
 
     for (V1 = 0; V1 < G->vertexNum; V1++)
@@ -126,7 +124,6 @@ bool Dijkstra(graph_t G, int dist[], int path[], vertex_t startV)
         {
             path[V1] = -1;
         }
-        collected[V1] = false;
     }
 
     dist[startV] = 0;
@@ -156,10 +153,11 @@ bool Dijkstra(graph_t G, int dist[], int path[], vertex_t startV)
             }
         }
     }
+
     return true;
 }
 
-bool Floyd(graph_t G, weight_t D[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER])
+bool Floyd(graph_t G, edge_t D[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER])
 {
     vertex_t i, j, k;
 
@@ -190,5 +188,6 @@ bool Floyd(graph_t G, weight_t D[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER
             }
         }
     }
+
     return true;
 }

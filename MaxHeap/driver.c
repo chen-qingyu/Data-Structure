@@ -1,4 +1,4 @@
-#include "Heap.h"
+#include "MaxHeap.h"
 
 int main(void)
 {
@@ -13,7 +13,7 @@ int main(void)
     printf("Is the heap empty? %s\n", IsEmpty(heap) ? "Yes" : "No");
 
     printf("Build heap.\n");
-    BuildHeap(heap);
+    BuildMaxHeap(heap);
 
     printf("Delete three times.\n");
     printf("The data is %d.\n", Delete(heap));

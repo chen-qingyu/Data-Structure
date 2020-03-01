@@ -19,9 +19,10 @@
 #include <string.h>
 #include <math.h>
 
+#define ERROR (-1)
+
 #define SIZE 17
 #define MAX_KEY_SIZE 10
-#define ERROR (-1)
 
 typedef char key_t[MAX_KEY_SIZE];
 

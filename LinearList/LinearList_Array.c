@@ -16,7 +16,7 @@ list_t CreateList(void)
     }
 
     list->last = -1;
-    printf("Create a new list successful.\n");
+
     return list;
 }
 
@@ -39,7 +39,7 @@ item_t FindByIndex(list_t list, int i)
 {
     if (i < 0 || i > list->last)
     {
-        printf("Illegal location.\n");
+        fprintf(stderr, "Illegal location.\n");
         return ERROR;
     }
 
@@ -49,10 +49,12 @@ item_t FindByIndex(list_t list, int i)
 int Find(list_t list, item_t data)
 {
     int index = 0;
+
     while (index <= list->last && list->data[index] != data)
     {
         index++;
     }
+
     if (index > list->last)
     {
         return ERROR;
@@ -67,13 +69,13 @@ bool Insert(list_t list, int i, item_t data)
 {
     if (IsFull(list))
     {
-        printf("The list is full.\n");
+        fprintf(stderr, "The list is full.\n");
         return false;
     }
 
     if (i < 0 || i > (list->last + 1))
     {
-        printf("Illegal location.\n");
+        fprintf(stderr, "Illegal location.\n");
         return false;
     }
 
@@ -83,6 +85,7 @@ bool Insert(list_t list, int i, item_t data)
     }
     list->data[i] = data;
     list->last++;
+
     return true;
 }
 
@@ -90,13 +93,13 @@ bool Delete(list_t list, int i)
 {
     if (IsEmpty(list))
     {
-        printf("The list is empty.\n");
+        fprintf(stderr, "The list is empty.\n");
         return false;
     }
 
     if (i < 0 || i > list->last)
     {
-        printf("Illegal location.\n");
+        fprintf(stderr, "Illegal location.\n");
         return false;
     }
 
@@ -105,6 +108,7 @@ bool Delete(list_t list, int i)
         list->data[j - 1] = list->data[j];
     }
     list->last--;
+
     return true;
 }
 
@@ -121,5 +125,6 @@ void Print(list_t list)
 bool LinkList(list_t list1, list_t list2)
 {
     printf("Array can't implement %s function.\n", __FUNCTION__);
+
     return false;
 }

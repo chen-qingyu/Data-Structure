@@ -18,7 +18,7 @@ queue_t CreateQueue(void)
 
     queue->front = -1;
     queue->rear = -1;
-    printf("Create a new queue successful.\n");
+
     return queue;
 }
 
@@ -41,12 +41,13 @@ bool Add(queue_t queue, item_t data)
 {
     if (IsFull(queue))
     {
-        printf("The queue is full.\n");
+        fprintf(stderr, "The queue is full.\n");
         return false;
     }
 
     queue->rear = (queue->rear + 1) % SIZE;
     queue->data[queue->rear] = data;
+
     return true;
 }
 
@@ -54,10 +55,11 @@ item_t Delete(queue_t queue)
 {
     if (IsEmpty(queue))
     {
-        printf("The queue is empty.\n");
+        fprintf(stderr, "The queue is empty.\n");
         return ERROR;
     }
 
     queue->front = (queue->front + 1) % SIZE;
+
     return queue->data[queue->front];
 }

@@ -1,4 +1,4 @@
-#include "Heap.h"
+#include "MaxHeap.h"
 
 heap_t CreateHeap(void)
 {
@@ -35,6 +35,7 @@ bool Insert(heap_t heap, item_t data)
         heap->data[i] = heap->data[i / 2];
     }
     heap->data[i] = data;
+
     return true;
 }
 
@@ -50,8 +51,8 @@ item_t Delete(heap_t heap)
     item_t maxItem, tmp;
 
     maxItem = heap->data[1];
-
     tmp = heap->data[heap->size--];
+
     for (parent = 1; parent * 2 <= heap->size; parent = child)
     {
         child = parent * 2;
@@ -73,10 +74,11 @@ item_t Delete(heap_t heap)
     return maxItem;
 }
 
-void BuildHeap(heap_t heap)
+void BuildMaxHeap(heap_t heap)
 {
     int parent, child;
     item_t tmp;
+
     for (int i = heap->size / 2; i > 0; i--)
     {
         tmp = heap->data[i];

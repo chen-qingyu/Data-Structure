@@ -1,4 +1,4 @@
-#include "BinaryTree.h"
+#include "BinarySearchTree.h"
 
 tree_t CreateTree(void)
 {
@@ -11,7 +11,7 @@ tree_t CreateTree(void)
 
     tree->left = NULL;
     tree->right = NULL;
-    printf("Create a new binary tree successful.\n");
+
     return tree;
 }
 
@@ -24,7 +24,7 @@ void Traversal(tree_t tree, int type)
             // 先序遍历
             case PRE_ORDER:
                 {
-                    printf("%c ", tree->data);
+                    printf("%d ", tree->data);
                     Traversal(tree->left, PRE_ORDER);
                     Traversal(tree->right, PRE_ORDER);
                     break;
@@ -33,7 +33,7 @@ void Traversal(tree_t tree, int type)
             case IN_ORDER:
                 {
                     Traversal(tree->left, IN_ORDER);
-                    printf("%c ", tree->data);
+                    printf("%d ", tree->data);
                     Traversal(tree->right, IN_ORDER);
                     break;
                 }
@@ -42,7 +42,7 @@ void Traversal(tree_t tree, int type)
                 {
                     Traversal(tree->left, POST_ORDER);
                     Traversal(tree->right, POST_ORDER);
-                    printf("%c ", tree->data);
+                    printf("%d ", tree->data);
                     break;
                 }
             // 层次遍历
@@ -58,7 +58,7 @@ void Traversal(tree_t tree, int type)
                     while (!IsEmpty(Q))
                     {
                         T = DeleteQ(Q);
-                        printf("%c ", T->data);
+                        printf("%d ", T->data);
                         if (T->left)
                         {
                             AddQ(Q, T->left);
@@ -82,6 +82,7 @@ void Traversal(tree_t tree, int type)
 tree_t Find(tree_t tree, item_t data)
 {
     tree_t current = tree;
+
     while (current)
     {
         if (data > current->data)
@@ -97,12 +98,14 @@ tree_t Find(tree_t tree, item_t data)
             return current;
         }
     }
+
     return NULL;
 }
 
 tree_t FindMin(tree_t tree)
 {
     tree_t current = tree;
+
     if (current)
     {
         while (current->left)
@@ -110,12 +113,14 @@ tree_t FindMin(tree_t tree)
             current = current->left;
         }
     }
+
     return current;
 }
 
 tree_t FindMax(tree_t tree)
 {
     tree_t current = tree;
+
     if (current)
     {
         while (current->right)
@@ -123,6 +128,7 @@ tree_t FindMax(tree_t tree)
             current = current->right;
         }
     }
+
     return current;
 }
 
@@ -146,6 +152,7 @@ tree_t Insert(tree_t tree, item_t data)
             tree->right = Insert(tree->right, data);
         }
     }
+
     return tree;
 }
 
@@ -155,7 +162,7 @@ tree_t Delete(tree_t tree, item_t data)
 
     if (!tree)
     {
-        printf("Error: There was no item %c", data);
+        printf("Error: There was no item %d", data);
     }
     else
     {
@@ -191,5 +198,6 @@ tree_t Delete(tree_t tree, item_t data)
             }
         }
     }
+
     return tree;
 }

@@ -25,7 +25,7 @@ queue_t CreateQueue(void)
 
     queue->front = NULL;
     queue->rear = NULL;
-    printf("Create a new queue successful.\n");
+
     return queue;
 }
 
@@ -33,11 +33,13 @@ int GetLength(queue_t queue)
 {
     node_t current = queue->front;
     int length = 0;
+
     while (current)
     {
         current = current->next;
         length++;
     }
+
     return length;
 }
 
@@ -55,7 +57,7 @@ bool Add(queue_t queue, item_t data)
 {
     if (IsFull(queue))
     {
-        printf("The queue is full.\n");
+        fprintf(stderr, "The queue is full.\n");
         return false;
     }
 
@@ -78,6 +80,7 @@ bool Add(queue_t queue, item_t data)
         queue->rear->next = add;
         queue->rear = add;
     }
+
     return true;
 }
 
@@ -85,7 +88,7 @@ item_t Delete(queue_t queue)
 {
     if (IsEmpty(queue))
     {
-        printf("The queue is empty.\n");
+        fprintf(stderr, "The queue is empty.\n");
         return ERROR;
     }
 
@@ -101,5 +104,6 @@ item_t Delete(queue_t queue)
     }
     item_t data = del->data;
     free(del);
+
     return data;
 }

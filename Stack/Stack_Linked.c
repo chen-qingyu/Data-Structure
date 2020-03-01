@@ -16,7 +16,7 @@ stack_t CreateStack(void)
     }
 
     stack->next = NULL;
-    printf("Create a new stack successful.\n");
+
     return stack;
 }
 
@@ -24,11 +24,13 @@ int GetLength(stack_t stack)
 {
     stack_t current = stack->next;
     int length = 0;
+
     while (current)
     {
         current = current->next;
         length++;
     }
+
     return length;
 }
 
@@ -46,7 +48,7 @@ bool Push(stack_t stack, item_t data)
 {
     if (IsFull(stack))
     {
-        printf("The stack is full.\n");
+        fprintf(stderr, "The stack is full.\n");
         return false;
     }
 
@@ -60,6 +62,7 @@ bool Push(stack_t stack, item_t data)
     top->data = data;
     top->next = stack->next;
     stack->next = top;
+
     return true;
 }
 
@@ -67,7 +70,7 @@ item_t Pop(stack_t stack)
 {
     if (IsEmpty(stack))
     {
-        printf("The stack is empty.\n");
+        fprintf(stderr, "The stack is empty.\n");
         return ERROR;
     }
 
@@ -75,5 +78,6 @@ item_t Pop(stack_t stack)
     stack->next = top->next;
     item_t data = top->data;
     free(top);
+
     return data;
 }

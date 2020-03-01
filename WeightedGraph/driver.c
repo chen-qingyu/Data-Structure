@@ -1,4 +1,4 @@
-#include "Graph.h"
+#include "WeightedGraph.h"
 
 int main(void)
 {
@@ -17,34 +17,33 @@ int main(void)
     Link(G, 3, 6, 4);
     Link(G, 6, 5, 1);
 
-    printf("      +--+   2    +--+  \n");
-    printf("      |V0|------->|V1|  \n");
-    printf("      +--+        +--+  \n");
-    printf("   +--^  | 1    3 |  |  10\n");
-    printf("  4|     +--v  v--+  +--v\n");
+    printf("      +--+   2    +--+      \n");
+    printf("      |V0|------->|V1|      \n");
+    printf("      +--+        +--+      \n");
+    printf("   +--^  | 1    3 |  |  10  \n");
+    printf("  4|     +--v  v--+  +--v   \n");
     printf("+--+    2   +--+   2    +--+\n");
     printf("|V2|<-------|V3|------->|V4|\n");
     printf("+--+        +--+        +--+\n");
-    printf("  5|      8 |  | 4      |6\n");
-    printf("   +--v  v--+  +--v  v--+\n");
-    printf("      +--+   1    +--+  \n");
-    printf("      |V5|<-------|V6|  \n");
-    printf("      +--+        +--+  \n");
-
+    printf("  5|      8 |  | 4      |6  \n");
+    printf("   +--v  v--+  +--v  v--+   \n");
+    printf("      +--+   1    +--+      \n");
+    printf("      |V5|<-------|V6|      \n");
+    printf("      +--+        +--+      \n");
     printf("\n");
 
     printf("BFS from V0:\n");
     CleanFlag();
     BFS(G, 0);
+    printf("\n");
 
     printf("DFS from V0:\n");
     CleanFlag();
     DFS(G, 0);
-
     printf("\n");
 
     int dist[VERTEX_NUMBER] = {INFINITY};
-    int path[VERTEX_NUMBER] = {-1};
+    int path[VERTEX_NUMBER] = { -1};
     if (Dijkstra(G, dist, path, 0))
     {
         printf("Dijkstra from V0: \n");
