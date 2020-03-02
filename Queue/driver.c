@@ -9,9 +9,9 @@ int main(void)
 
     for (int i = 0; i < sizeof(a) / sizeof(a[0]); i++)
     {
-        if (Add(queue, a[i]))
+        if (Enqueue(queue, a[i]))
         {
-            printf("Add an item: %d.\n", a[i]);
+            printf("Enqueue an item: %d.\n", a[i]);
         }
         else
         {
@@ -23,7 +23,7 @@ int main(void)
 
     for (int i = 0; i < sizeof(a) / sizeof(a[0]); i++)
     {
-        printf("Delete an item: %d.\n", Delete(queue));
+        printf("Dequeue an item: %d.\n", Dequeue(queue));
     }
 
     printf("The queue is empty? %s.\n\n", IsEmpty(queue) ? "yes" : "no");

@@ -53,7 +53,7 @@ bool IsEmpty(queue_t queue)
     return queue->front == NULL;
 }
 
-bool Add(queue_t queue, item_t data)
+bool Enqueue(queue_t queue, item_t data)
 {
     if (IsFull(queue))
     {
@@ -84,7 +84,7 @@ bool Add(queue_t queue, item_t data)
     return true;
 }
 
-item_t Delete(queue_t queue)
+item_t Dequeue(queue_t queue)
 {
     if (IsEmpty(queue))
     {

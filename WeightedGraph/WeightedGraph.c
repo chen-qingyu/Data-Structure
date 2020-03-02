@@ -58,18 +58,18 @@ void BFS(graph_t G, vertex_t startV)
 
     Visit(startV);
     visited[startV] = true;
-    AddQ(Q, startV);
+    Enqueue(Q, startV);
 
     while (!IsEmpty(Q))
     {
-        V1 = DeleteQ(Q);
+        V1 = Dequeue(Q);
         for (V2 = 0; V2 < G->vertexNum; V2++)
         {
             if (!visited[V2] && IsAdjacent(G, V1, V2))
             {
                 Visit(V2);
                 visited[V2] = true;
-                AddQ(Q, V2);
+                Enqueue(Q, V2);
             }
         }
     }

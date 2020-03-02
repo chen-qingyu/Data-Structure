@@ -54,18 +54,18 @@ void Traversal(tree_t tree, int type)
                     {
                         return;
                     }
-                    AddQ(Q, tree);
+                    Enqueue(Q, tree);
                     while (!IsEmpty(Q))
                     {
-                        T = DeleteQ(Q);
+                        T = Dequeue(Q);
                         printf("%d ", T->data);
                         if (T->left)
                         {
-                            AddQ(Q, T->left);
+                            Enqueue(Q, T->left);
                         }
                         if (T->right)
                         {
-                            AddQ(Q, T->right);
+                            Enqueue(Q, T->right);
                         }
                     }
                     break;

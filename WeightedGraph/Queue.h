@@ -6,8 +6,8 @@
     2. int GetLength(queue_t queue)
     3. bool IsFull(queue_t queue)
     4. bool IsEmpty(queue_t queue)
-    5. bool AddQ(queue_t queue, vertex_t data)
-    6. vertex_t DeleteQ(queue_t queue)
+    5. bool Enqueue(queue_t queue, vertex_t data)
+    6. vertex_t Dequeue(queue_t queue)
 */
 
 #ifndef QUEUE_H
@@ -34,7 +34,7 @@ queue_t CreateQueue(void);
 int GetLength(queue_t queue);
 bool IsFull(queue_t queue);
 bool IsEmpty(queue_t queue);
-bool AddQ(queue_t queue, vertex_t data);
-vertex_t DeleteQ(queue_t queue);
+bool Enqueue(queue_t queue, vertex_t data);
+vertex_t Dequeue(queue_t queue);
 
 #endif

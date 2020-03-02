@@ -14,7 +14,7 @@ int main(void)
     Insert(tree, 5);
     printf("\n");
 
-    printf("\nPRE_ORDER:\n");
+    printf("PRE_ORDER:\n");
     Traversal(tree, PRE_ORDER);
     printf("\nIN_ORDER:\n");
     Traversal(tree, IN_ORDER);
@@ -22,7 +22,7 @@ int main(void)
     Traversal(tree, POST_ORDER);
     printf("\nLEVEL_ORDER:\n");
     Traversal(tree, LEVEL_ORDER);
-    printf("\n");
+    printf("\n\n");
 
     tree_t min = FindMin(tree);
     printf("Min: %d\n", min->data);
