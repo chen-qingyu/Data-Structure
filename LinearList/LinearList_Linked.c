@@ -155,7 +155,8 @@ void Print(list_t list)
 {
     printf("Now print the list elements:\n");
     list_t tmp = list->next;
-    for (int i = 0; i < GetLength(list); i++)
+    int len = GetLength(list);
+    for (int i = 0; i < len; i++)
     {
         printf("%d: %d\n", i, tmp->data);
         tmp = tmp->next;
