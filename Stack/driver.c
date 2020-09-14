@@ -9,14 +9,8 @@ int main(void)
 
     for (int i = 0; i < sizeof(a) / sizeof(a[0]); i++)
     {
-        if (Push(stack, a[i]))
-        {
-            printf("Push an item: %d.\n", a[i]);
-        }
-        else
-        {
-            printf("Failed to push items.\n");
-        }
+        Push(stack, a[i]);
+        printf("Push an item: %d.\n", a[i]);
     }
 
     printf("The stack is empty? %s.\n\n", IsEmpty(stack) ? "yes" : "no");

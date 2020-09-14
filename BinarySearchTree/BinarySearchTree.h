@@ -28,7 +28,7 @@
 
 typedef int item_t;
 
-typedef struct tree * tree_t;
+typedef struct tree *tree_t;
 
 struct tree
 {

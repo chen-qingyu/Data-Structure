@@ -92,18 +92,18 @@ int Find(list_t list, item_t data)
     }
 }
 
-bool Insert(list_t list, int i, item_t data)
+void Insert(list_t list, int i, item_t data)
 {
     if (IsFull(list))
     {
         fprintf(stderr, "The list is full.\n");
-        return false;
+        return;
     }
 
     if (i < 0 || i > GetLength(list))
     {
         fprintf(stderr, "Illegal location.\n");
-        return false;
+        return;
     }
 
     list_t new = (list_t)malloc(sizeof(struct list));
@@ -121,22 +121,20 @@ bool Insert(list_t list, int i, item_t data)
     new->data = data;
     new->next = tmp->next;
     tmp->next = new;
-
-    return true;
 }
 
-bool Delete(list_t list, int i)
+void Delete(list_t list, int i)
 {
     if (IsEmpty(list))
     {
         fprintf(stderr, "The list is empty.\n");
-        return false;
+        return;
     }
 
     if (i < 0 || i > (GetLength(list) - 1))
     {
         fprintf(stderr, "Illegal location.\n");
-        return false;
+        return;
     }
 
     list_t tmp = list;
@@ -147,8 +145,6 @@ bool Delete(list_t list, int i)
     list_t del = tmp->next;
     tmp->next = del->next;
     free(del);
-
-    return true;
 }
 
 void Print(list_t list)
@@ -164,12 +160,12 @@ void Print(list_t list)
     printf("That's all.\n");
 }
 
-bool LinkList(list_t list1, list_t list2)
+void LinkList(list_t list1, list_t list2)
 {
     if (list1 == list2)
     {
         fprintf(stderr, "Do you want to make a circular linked list?\n");
-        return false;
+        return;
     }
 
     list_t tail = list1;
@@ -181,6 +177,4 @@ bool LinkList(list_t list1, list_t list2)
     free(list2);
     list2 = NULL;
     printf("Link list 1 and list 2 successful.\n");
-
-    return true;
 }

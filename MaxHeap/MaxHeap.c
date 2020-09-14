@@ -4,6 +4,12 @@ heap_t CreateHeap(void)
 {
     heap_t heap = (heap_t)malloc(sizeof(struct heap));
     heap->data = (item_t *)malloc((SIZE + 1) * sizeof(item_t));
+    if (heap->data == NULL)
+    {
+        fprintf(stderr, "ERROR: There was not enough memory.\n");
+        exit(-2);
+    }
+
     heap->size = 0;
     heap->capacity = SIZE;
     heap->data[0] = MAX_ITEM;
@@ -21,12 +27,12 @@ bool IsEmpty(heap_t heap)
     return heap->size == 0;
 }
 
-bool Insert(heap_t heap, item_t data)
+void Insert(heap_t heap, item_t data)
 {
     if (IsFull(heap))
     {
         printf("The heap is full.\n");
-        return false;
+        return;
     }
 
     int i;
@@ -35,8 +41,6 @@ bool Insert(heap_t heap, item_t data)
         heap->data[i] = heap->data[i / 2];
     }
     heap->data[i] = data;
-
-    return true;
 }
 
 item_t Delete(heap_t heap)

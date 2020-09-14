@@ -74,23 +74,21 @@ int Find(table_t table, key_t key)
     }
 }
 
-bool Modify(table_t table, key_t key, value_t value)
+void Modify(table_t table, key_t key, value_t value)
 {
     int pos = FindPos(table, key);
 
     if (table[pos].state == FULL)
     {
         table[pos].value = value;
-        return true;
     }
     else
     {
         fprintf(stderr, "Key-value pair does not exist.\n");
-        return false;
     }
 }
 
-bool Insert(table_t table, key_t key, value_t value)
+void Insert(table_t table, key_t key, value_t value)
 {
     int pos = FindPos(table, key);
 
@@ -99,28 +97,24 @@ bool Insert(table_t table, key_t key, value_t value)
         table[pos].state = FULL;
         strcpy(table[pos].key, key);
         table[pos].value = value;
-        return true;
     }
     else
     {
         fprintf(stderr, "Key-value pair already exists.\n");
-        return false;
     }
 }
 
-bool Delete(table_t table, key_t key)
+void Delete(table_t table, key_t key)
 {
     int pos = FindPos(table, key);
 
     if (table[pos].state == FULL)
     {
         table[pos].state = DELETED;
-        return true;
     }
     else
     {
         fprintf(stderr, "Key-value pair does not exist.\n");
-        return false;
     }
 }
 

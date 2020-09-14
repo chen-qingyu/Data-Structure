@@ -5,7 +5,7 @@
     1. heap_t CreateHeap(void)
     2. bool IsFull(heap_t heap)
     3. bool IsEmpty(heap_t heap)
-    4. bool Insert(heap_t heap, item_t data)
+    4. void Insert(heap_t heap, item_t data)
     5. item_t Delete(heap_t heap)
     6. void BuildMaxHeap(heap_t heap)
 */
@@ -37,7 +37,7 @@ struct heap
 heap_t CreateHeap(void);
 bool IsFull(heap_t heap);
 bool IsEmpty(heap_t heap);
-bool Insert(heap_t heap, item_t data);
+void Insert(heap_t heap, item_t data);
 item_t Delete(heap_t heap);
 void BuildMaxHeap(heap_t heap);
 

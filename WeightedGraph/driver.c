@@ -43,7 +43,7 @@ int main(void)
     printf("\n");
 
     int dist[VERTEX_NUMBER] = {INFINITY};
-    int path[VERTEX_NUMBER] = { -1};
+    int path[VERTEX_NUMBER] = {-1};
     if (Dijkstra(G, dist, path, 0))
     {
         printf("Dijkstra from V0: \n");

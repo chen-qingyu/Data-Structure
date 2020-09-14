@@ -65,18 +65,18 @@ int Find(list_t list, item_t data)
     }
 }
 
-bool Insert(list_t list, int i, item_t data)
+void Insert(list_t list, int i, item_t data)
 {
     if (IsFull(list))
     {
         fprintf(stderr, "The list is full.\n");
-        return false;
+        return;
     }
 
     if (i < 0 || i > (list->last + 1))
     {
         fprintf(stderr, "Illegal location.\n");
-        return false;
+        return;
     }
 
     for (int j = list->last; j >= i; j--)
@@ -85,22 +85,20 @@ bool Insert(list_t list, int i, item_t data)
     }
     list->data[i] = data;
     list->last++;
-
-    return true;
 }
 
-bool Delete(list_t list, int i)
+void Delete(list_t list, int i)
 {
     if (IsEmpty(list))
     {
         fprintf(stderr, "The list is empty.\n");
-        return false;
+        return;
     }
 
     if (i < 0 || i > list->last)
     {
         fprintf(stderr, "Illegal location.\n");
-        return false;
+        return;
     }
 
     for (int j = i + 1; j <= list->last; j++)
@@ -108,8 +106,6 @@ bool Delete(list_t list, int i)
         list->data[j - 1] = list->data[j];
     }
     list->last--;
-
-    return true;
 }
 
 void Print(list_t list)
@@ -122,9 +118,7 @@ void Print(list_t list)
     printf("That's all.\n");
 }
 
-bool LinkList(list_t list1, list_t list2)
+void LinkList(list_t list1, list_t list2)
 {
     printf("Array can't implement %s function.\n", __FUNCTION__);
-
-    return false;
 }

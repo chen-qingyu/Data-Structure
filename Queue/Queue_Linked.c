@@ -1,6 +1,6 @@
 #include "Queue.h"
 
-typedef struct node * node_t;
+typedef struct node *node_t;
 
 struct queue
 {
@@ -53,12 +53,12 @@ bool IsEmpty(queue_t queue)
     return queue->front == NULL;
 }
 
-bool Enqueue(queue_t queue, item_t data)
+void Enqueue(queue_t queue, item_t data)
 {
     if (IsFull(queue))
     {
         fprintf(stderr, "The queue is full.\n");
-        return false;
+        return;
     }
 
     node_t add = (node_t)malloc(sizeof(struct node));
@@ -80,8 +80,6 @@ bool Enqueue(queue_t queue, item_t data)
         queue->rear->next = add;
         queue->rear = add;
     }
-
-    return true;
 }
 
 item_t Dequeue(queue_t queue)

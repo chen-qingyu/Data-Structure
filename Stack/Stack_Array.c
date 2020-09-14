@@ -35,17 +35,15 @@ bool IsEmpty(stack_t stack)
     return GetLength(stack) <= 0;
 }
 
-bool Push(stack_t stack, item_t data)
+void Push(stack_t stack, item_t data)
 {
     if (IsFull(stack))
     {
         fprintf(stderr, "The stack is full.\n");
-        return false;
+        return;
     }
 
     stack->data[++(stack->top)] = data;
-
-    return true;
 }
 
 item_t Pop(stack_t stack)

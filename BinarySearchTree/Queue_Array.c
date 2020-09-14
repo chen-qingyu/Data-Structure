@@ -30,18 +30,16 @@ bool IsEmpty(queue_t queue)
     return GetLength(queue) <= 0;
 }
 
-bool Enqueue(queue_t queue, tree_t data)
+void Enqueue(queue_t queue, tree_t data)
 {
     if (IsFull(queue))
     {
         fprintf(stderr, "The queue is full.\n");
-        return false;
+        return;
     }
 
     queue->rear = (queue->rear + 1) % SIZE;
     queue->data[queue->rear] = data;
-
-    return true;
 }
 
 tree_t Dequeue(queue_t queue)

@@ -37,18 +37,16 @@ bool IsEmpty(queue_t queue)
     return GetLength(queue) <= 0;
 }
 
-bool Enqueue(queue_t queue, item_t data)
+void Enqueue(queue_t queue, item_t data)
 {
     if (IsFull(queue))
     {
         fprintf(stderr, "The queue is full.\n");
-        return false;
+        return;
     }
 
     queue->rear = (queue->rear + 1) % SIZE;
     queue->data[queue->rear] = data;
-
-    return true;
 }
 
 item_t Dequeue(queue_t queue)

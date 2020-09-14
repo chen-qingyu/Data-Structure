@@ -1,5 +1,12 @@
 #include "Queue.h"
 
+struct queue
+{
+    item_t data[SIZE + 1]; // 循环队列，数组容量为队列最大有效长度加一
+    int front;
+    int rear;
+};
+
 queue_t CreateQueue(void)
 {
     queue_t queue = (queue_t)malloc(sizeof(struct queue));
@@ -30,21 +37,19 @@ bool IsEmpty(queue_t queue)
     return GetLength(queue) <= 0;
 }
 
-bool Enqueue(queue_t queue, vertex_t data)
+void Enqueue(queue_t queue, item_t data)
 {
     if (IsFull(queue))
     {
         fprintf(stderr, "The queue is full.\n");
-        return false;
+        return;
     }
 
     queue->rear = (queue->rear + 1) % SIZE;
     queue->data[queue->rear] = data;
-
-    return true;
 }
 
-vertex_t Dequeue(queue_t queue)
+item_t Dequeue(queue_t queue)
 {
     if (IsEmpty(queue))
     {

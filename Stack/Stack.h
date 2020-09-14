@@ -6,7 +6,7 @@
     2. int GetLength(stack_t stack)
     3. bool IsFull(stack_t stack)
     4. bool IsEmpty(stack_t stack)
-    5. bool Push(stack_t stack, item_t data)
+    5. void Push(stack_t stack, item_t data)
     6. item_t Pop(stack_t stack)
 */
 
@@ -30,7 +30,7 @@ stack_t CreateStack(void);
 int GetLength(stack_t stack);
 bool IsFull(stack_t stack);
 bool IsEmpty(stack_t stack);
-bool Push(stack_t stack, item_t data);
+void Push(stack_t stack, item_t data);
 item_t Pop(stack_t stack);
 
 #endif

@@ -15,7 +15,7 @@ int main(void)
     printf("Build heap.\n");
     BuildMaxHeap(heap);
 
-    printf("Delete three times.\n");
+    printf("Delete three items.\n");
     printf("The data is %d.\n", Delete(heap));
     printf("The data is %d.\n", Delete(heap));
     printf("The data is %d.\n", Delete(heap));

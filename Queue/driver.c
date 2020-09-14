@@ -9,14 +9,8 @@ int main(void)
 
     for (int i = 0; i < sizeof(a) / sizeof(a[0]); i++)
     {
-        if (Enqueue(queue, a[i]))
-        {
-            printf("Enqueue an item: %d.\n", a[i]);
-        }
-        else
-        {
-            printf("Failed to add items.\n");
-        }
+        Enqueue(queue, a[i]);
+        printf("Enqueue an item: %d.\n", a[i]);
     }
 
     printf("The queue is empty? %s.\n\n", IsEmpty(queue) ? "yes" : "no");

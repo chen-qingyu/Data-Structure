@@ -44,12 +44,12 @@ bool IsEmpty(stack_t stack)
     return stack->next == NULL;
 }
 
-bool Push(stack_t stack, item_t data)
+void Push(stack_t stack, item_t data)
 {
     if (IsFull(stack))
     {
         fprintf(stderr, "The stack is full.\n");
-        return false;
+        return;
     }
 
     stack_t top = (stack_t)malloc(sizeof(struct stack));
@@ -62,8 +62,6 @@ bool Push(stack_t stack, item_t data)
     top->data = data;
     top->next = stack->next;
     stack->next = top;
-
-    return true;
 }
 
 item_t Pop(stack_t stack)

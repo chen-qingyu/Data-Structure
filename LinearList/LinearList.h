@@ -8,10 +8,10 @@
     4. bool IsEmpty(list_t list)
     5. item_t FindByIndex(list_t list, int i)
     6. int Find(list_t list, item_t data)
-    7. bool Insert(list_t list, int i, item_t data)
-    8. bool Delete(list_t list, int i)
+    7. void Insert(list_t list, int i, item_t data)
+    8. void Delete(list_t list, int i)
     9. void Print(list_t list)
-   10. bool LinkList(list_t list1, list_t list2)
+   10. void LinkList(list_t list1, list_t list2)
 */
 
 #ifndef LINEAR_LIST_H
@@ -36,9 +36,9 @@ bool IsFull(list_t list);
 bool IsEmpty(list_t list);
 item_t FindByIndex(list_t list, int i);
 int Find(list_t list, item_t data);
-bool Insert(list_t list, int i, item_t data);
-bool Delete(list_t list, int i);
+void Insert(list_t list, int i, item_t data);
+void Delete(list_t list, int i);
 void Print(list_t list);
-bool LinkList(list_t list1, list_t list2);
+void LinkList(list_t list1, list_t list2);
 
 #endif

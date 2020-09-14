@@ -6,7 +6,7 @@
     2. int GetLength(queue_t queue)
     3. bool IsFull(queue_t queue)
     4. bool IsEmpty(queue_t queue)
-    5. bool Enqueue(queue_t queue, item_t data)
+    5. void Enqueue(queue_t queue, item_t data)
     6. item_t Dequeue(queue_t queue)
 */
 
@@ -35,7 +35,7 @@ queue_t CreateQueue(void);
 int GetLength(queue_t queue);
 bool IsFull(queue_t queue);
 bool IsEmpty(queue_t queue);
-bool Enqueue(queue_t queue, tree_t data);
+void Enqueue(queue_t queue, tree_t data);
 tree_t Dequeue(queue_t queue);
 
 #endif

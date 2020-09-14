@@ -23,58 +23,58 @@ void Traversal(tree_t tree, int type)
         {
             // 先序遍历
             case PRE_ORDER:
-                {
-                    printf("%d ", tree->data);
-                    Traversal(tree->left, PRE_ORDER);
-                    Traversal(tree->right, PRE_ORDER);
-                    break;
-                }
+            {
+                printf("%d ", tree->data);
+                Traversal(tree->left, PRE_ORDER);
+                Traversal(tree->right, PRE_ORDER);
+                break;
+            }
             // 中序遍历
             case IN_ORDER:
-                {
-                    Traversal(tree->left, IN_ORDER);
-                    printf("%d ", tree->data);
-                    Traversal(tree->right, IN_ORDER);
-                    break;
-                }
+            {
+                Traversal(tree->left, IN_ORDER);
+                printf("%d ", tree->data);
+                Traversal(tree->right, IN_ORDER);
+                break;
+            }
             // 后序遍历
             case POST_ORDER:
-                {
-                    Traversal(tree->left, POST_ORDER);
-                    Traversal(tree->right, POST_ORDER);
-                    printf("%d ", tree->data);
-                    break;
-                }
+            {
+                Traversal(tree->left, POST_ORDER);
+                Traversal(tree->right, POST_ORDER);
+                printf("%d ", tree->data);
+                break;
+            }
             // 层次遍历
             case LEVEL_ORDER:
+            {
+                queue_t Q = CreateQueue();
+                tree_t T;
+                if (tree == NULL)
                 {
-                    queue_t Q = CreateQueue();
-                    tree_t T;
-                    if (tree == NULL)
-                    {
-                        return;
-                    }
-                    Enqueue(Q, tree);
-                    while (!IsEmpty(Q))
-                    {
-                        T = Dequeue(Q);
-                        printf("%d ", T->data);
-                        if (T->left)
-                        {
-                            Enqueue(Q, T->left);
-                        }
-                        if (T->right)
-                        {
-                            Enqueue(Q, T->right);
-                        }
-                    }
-                    break;
+                    return;
                 }
+                Enqueue(Q, tree);
+                while (!IsEmpty(Q))
+                {
+                    T = Dequeue(Q);
+                    printf("%d ", T->data);
+                    if (T->left)
+                    {
+                        Enqueue(Q, T->left);
+                    }
+                    if (T->right)
+                    {
+                        Enqueue(Q, T->right);
+                    }
+                }
+                break;
+            }
             default:
-                {
-                    printf("Error type!\n");
-                    break;
-                }
+            {
+                printf("Error type!\n");
+                break;
+            }
         }
     }
 }
