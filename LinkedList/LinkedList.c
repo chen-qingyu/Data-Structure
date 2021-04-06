@@ -189,7 +189,6 @@ void LinkList(list_t list1, list_t list2)
             list1 = list1->next;
         }
         list1->next = list2->next;
-        printf("Create circular linked list successfully.\n");
         return;
     }
 
@@ -201,7 +200,6 @@ void LinkList(list_t list1, list_t list2)
     tail->next = list2->next;
     free(list2);
     list2 = NULL;
-    printf("Link list 1 and list 2 successful.\n");
 }
 
 void Reverse(list_t list)
