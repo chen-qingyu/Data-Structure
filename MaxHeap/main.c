@@ -22,6 +22,5 @@ int main(void)
 
     printf("Is the heap empty? %s\n", IsEmpty(heap) ? "Yes" : "No");
 
-    getchar();
     return 0;
 }

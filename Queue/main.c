@@ -21,7 +21,5 @@ int main(void)
     }
 
     printf("The queue is empty? %s.\n\n", IsEmpty(queue) ? "yes" : "no");
-
-    getchar();
     return 0;
 }

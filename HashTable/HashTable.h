@@ -3,21 +3,21 @@
 对象集：散列表是由n(n>=0)个键值对(key-value pair)构成的集合
 操作集：散列表 table 属于 table_t ，键 key 属于 key_t ，值 value 属于 value_t ，基本操作有：
     1. table_t CreateTable(void)
-    2. int Find(table_t table, key_t key)
-    3. void Modify(table_t table, key_t key, value_t value)
-    4. void Insert(table_t table, key_t key, value_t value)
-    5. void Delete(table_t table, key_t key)
-    6. void ClearTable(table_t table)
+    2. void DestroyTable(table_t table)
+    3. int Find(table_t table, key_t key)
+    4. void Modify(table_t table, key_t key, value_t value)
+    5. void Insert(table_t table, key_t key, value_t value)
+    6. void Delete(table_t table, key_t key)
 */
 
 #ifndef HASH_TABLE_H
 #define HASH_TABLE_H
 
+#include <math.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <string.h>
-#include <math.h>
 
 #define ERROR (-1)
 
@@ -45,10 +45,10 @@ struct item
 typedef struct item *table_t;
 
 table_t CreateTable(void);
+void DestroyTable(table_t table);
 int Find(table_t table, key_t key);
 void Modify(table_t table, key_t key, value_t value);
 void Insert(table_t table, key_t key, value_t value);
 void Delete(table_t table, key_t key);
-void ClearTable(table_t table);
 
 #endif

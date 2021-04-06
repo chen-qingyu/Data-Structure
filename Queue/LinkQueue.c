@@ -29,6 +29,25 @@ queue_t CreateQueue(void)
     return queue;
 }
 
+void DestroyQueue(queue_t queue)
+{
+    if (queue)
+    {
+        node_t head = queue->front;
+        node_t current;
+
+        while (head)
+        {
+            current = head->next;
+            free(head);
+            head = current;
+        }
+
+        free(queue);
+        queue = NULL;
+    }
+}
+
 int GetLength(queue_t queue)
 {
     node_t current = queue->front;

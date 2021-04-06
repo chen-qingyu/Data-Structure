@@ -1,5 +1,12 @@
 #include "Queue.h"
 
+struct queue
+{
+    item_t data[SIZE + 1]; // 循环队列，数组容量为队列有效容量加一
+    int front;
+    int rear;
+};
+
 queue_t CreateQueue(void)
 {
     queue_t queue = (queue_t)malloc(sizeof(struct queue));
@@ -13,6 +20,15 @@ queue_t CreateQueue(void)
     queue->rear = -1;
 
     return queue;
+}
+
+void DestroyQueue(queue_t queue)
+{
+    if (queue)
+    {
+        free(queue);
+        queue = NULL;
+    }
 }
 
 int GetLength(queue_t queue)
@@ -30,7 +46,7 @@ bool IsEmpty(queue_t queue)
     return GetLength(queue) <= 0;
 }
 
-void Enqueue(queue_t queue, tree_t data)
+void Enqueue(queue_t queue, item_t data)
 {
     if (IsFull(queue))
     {
@@ -42,7 +58,7 @@ void Enqueue(queue_t queue, tree_t data)
     queue->data[queue->rear] = data;
 }
 
-tree_t Dequeue(queue_t queue)
+item_t Dequeue(queue_t queue)
 {
     if (IsEmpty(queue))
     {

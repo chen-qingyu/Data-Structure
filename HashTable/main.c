@@ -9,7 +9,7 @@ int main(void)
     Insert(table, "bbb", 2);
     Insert(table, "ccc", 3);
     Insert(table, "ddd", 4);
-    printf("\n");
+    printf("Inserted.\n\n");
 
     int a = Find(table, "aaa");
     printf("[%2d] %s: %d\n", a, table[a].key, table[a].value);
@@ -38,8 +38,8 @@ int main(void)
     }
     printf("\n");
 
-    printf("Clear table.\n");
-    ClearTable(table);
+    printf("Destroy table.\n");
+    DestroyTable(table);
 
     return 0;
 }

@@ -1,10 +1,9 @@
-#include "LinearList.h"
+#include "LinkedList.h"
 
 int main(void)
 {
     list_t list1 = CreateList(), list2 = CreateList();
     item_t a[] = {1, 2, 3, 4}, b[] = {233, 666, 888, 999};
-    printf("\n");
 
     for (int i = 0; i < sizeof(a) / sizeof(a[0]); i++)
     {
@@ -24,6 +23,10 @@ int main(void)
     Print(list1);
     printf("\n");
 
+    Reverse(list1);
+    Print(list1);
+    printf("\n");
+
     int length = GetLength(list1);
     for (int i = 0; i < length; i++)
     {
@@ -31,7 +34,11 @@ int main(void)
         printf("Delete an item.\n");
     }
     printf("The list is empty? %s.\n", IsEmpty(list1) ? "yes" : "no");
+    printf("\n");
 
-    getchar();
+    DestroyList(list1);
+    DestroyList(list2);
+    printf("Destroy list.\n");
+
     return 0;
 }

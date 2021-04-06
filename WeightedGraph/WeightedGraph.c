@@ -18,11 +18,20 @@ graph_t CreateGraph(void)
     {
         for (vertex_t V2 = 0; V2 < G->vertexNum; V2++)
         {
-            G->matrix[V1][V2] = INFINITY;
+            G->matrix[V1][V2] = NO_PATH;
         }
     }
 
     return G;
+}
+
+void DestroyGraph(graph_t G)
+{
+    if (G)
+    {
+        free(G);
+        G = NULL;
+    }
 }
 
 void Link(graph_t G, vertex_t V1, vertex_t V2, edge_t E)
@@ -35,7 +44,7 @@ void Link(graph_t G, vertex_t V1, vertex_t V2, edge_t E)
 
 bool IsAdjacent(graph_t G, vertex_t V1, vertex_t V2)
 {
-    return G->matrix[V1][V2] != INFINITY ? true : false;
+    return G->matrix[V1][V2] != NO_PATH ? true : false;
 }
 
 void Visit(vertex_t V)
@@ -94,7 +103,7 @@ void DFS(graph_t G, vertex_t startV)
 vertex_t FindMinDist(graph_t G, edge_t dist[], bool collected[])
 {
     vertex_t MinV, V;
-    int minDist = INFINITY;
+    int minDist = NO_PATH;
 
     for (V = 0; V < G->vertexNum; V++)
     {
@@ -105,7 +114,7 @@ vertex_t FindMinDist(graph_t G, edge_t dist[], bool collected[])
         }
     }
 
-    return (minDist < INFINITY) ? MinV : ERROR;
+    return (minDist < NO_PATH) ? MinV : ERROR;
 }
 
 bool Dijkstra(graph_t G, edge_t dist[], vertex_t path[], vertex_t startV)
@@ -116,7 +125,7 @@ bool Dijkstra(graph_t G, edge_t dist[], vertex_t path[], vertex_t startV)
     for (V1 = 0; V1 < G->vertexNum; V1++)
     {
         dist[V1] = G->matrix[startV][V1];
-        if (dist[V1] < INFINITY)
+        if (dist[V1] < NO_PATH)
         {
             path[V1] = startV;
         }
@@ -139,7 +148,7 @@ bool Dijkstra(graph_t G, edge_t dist[], vertex_t path[], vertex_t startV)
         collected[V1] = true;
         for (V2 = 0; V2 < G->vertexNum; V2++)
         {
-            if (collected[V2] == false && G->matrix[V1][V2] < INFINITY)
+            if (collected[V2] == false && G->matrix[V1][V2] < NO_PATH)
             {
                 if (G->matrix[V1][V2] < 0)
                 {

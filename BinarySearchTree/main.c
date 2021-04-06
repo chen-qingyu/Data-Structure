@@ -30,6 +30,8 @@ int main(void)
     printf("Max: %d\n", max->data);
     printf("\n");
 
-    getchar();
+    DestroyTree(tree);
+    printf("Destroy tree.\n");
+
     return 0;
 }

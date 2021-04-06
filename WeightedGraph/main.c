@@ -42,7 +42,7 @@ int main(void)
     DFS(G, 0);
     printf("\n");
 
-    int dist[VERTEX_NUMBER] = {INFINITY};
+    int dist[VERTEX_NUMBER] = {NO_PATH};
     int path[VERTEX_NUMBER] = {-1};
     if (Dijkstra(G, dist, path, 0))
     {
@@ -64,7 +64,10 @@ int main(void)
     {
         printf("Error in Dijkstra()...\n");
     }
+    printf("\n");
 
-    getchar();
+    DestroyGraph(G);
+    printf("Destroy graph.\n");
+
     return 0;
 }

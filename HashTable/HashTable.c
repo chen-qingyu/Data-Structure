@@ -29,6 +29,15 @@ table_t CreateTable(void)
     return table;
 }
 
+void DestroyTable(table_t table)
+{
+    if (table)
+    {
+        free(table);
+        table = NULL;
+    }
+}
+
 int FindPos(table_t table, key_t key)
 {
     int currentPos, newPos;
@@ -116,10 +125,4 @@ void Delete(table_t table, key_t key)
     {
         fprintf(stderr, "Key-value pair does not exist.\n");
     }
-}
-
-void ClearTable(table_t table)
-{
-    free(table);
-    table = NULL;
 }

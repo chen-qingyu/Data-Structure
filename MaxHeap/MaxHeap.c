@@ -17,6 +17,16 @@ heap_t CreateHeap(void)
     return heap;
 }
 
+void DestroyHeap(heap_t heap)
+{
+    if (heap)
+    {
+        free(heap->data);
+        free(heap);
+        heap = NULL;
+    }
+}
+
 bool IsFull(heap_t heap)
 {
     return heap->size == heap->capacity;

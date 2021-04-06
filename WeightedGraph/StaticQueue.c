@@ -2,7 +2,7 @@
 
 struct queue
 {
-    item_t data[SIZE + 1]; // 循环队列，数组容量为队列最大有效长度加一
+    item_t data[SIZE + 1]; // 循环队列，数组容量为队列有效容量加一
     int front;
     int rear;
 };
@@ -20,6 +20,15 @@ queue_t CreateQueue(void)
     queue->rear = -1;
 
     return queue;
+}
+
+void DestroyQueue(queue_t queue)
+{
+    if (queue)
+    {
+        free(queue);
+        queue = NULL;
+    }
 }
 
 int GetLength(queue_t queue)

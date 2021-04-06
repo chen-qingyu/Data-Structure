@@ -20,6 +20,15 @@ stack_t CreateStack(void)
     return stack;
 }
 
+void DestroyStack(stack_t stack)
+{
+    if (stack)
+    {
+        free(stack);
+        stack = NULL;
+    }
+}
+
 int GetLength(stack_t stack)
 {
     return stack->top + 1;
@@ -55,4 +64,15 @@ item_t Pop(stack_t stack)
     }
 
     return stack->data[(stack->top)--];
+}
+
+item_t Top(stack_t stack)
+{
+    if (IsEmpty(stack))
+    {
+        fprintf(stderr, "The stack is empty.\n");
+        return ERROR;
+    }
+
+    return stack->data[stack->top];
 }

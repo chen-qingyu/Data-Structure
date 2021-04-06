@@ -1,4 +1,8 @@
-#include "LinearList.h"
+#include "LinkedList.h"
+
+#define ERROR (-1)
+
+#define SIZE 100
 
 struct list
 {
@@ -18,6 +22,21 @@ list_t CreateList(void)
     list->next = NULL;
 
     return list;
+}
+
+void DestroyList(list_t list)
+{
+    if (list)
+    {
+        list_t current;
+
+        while (list)
+        {
+            current = list->next;
+            free(list);
+            list = current;
+        }
+    }
 }
 
 int GetLength(list_t list)
@@ -44,7 +63,7 @@ bool IsEmpty(list_t list)
     return list->next == NULL;
 }
 
-item_t FindByIndex(list_t list, int i)
+item_t Get(list_t list, int i) // list[i]
 {
     if (i < 0 || i > (GetLength(list) - 1))
     {
@@ -112,13 +131,13 @@ void Insert(list_t list, int i, item_t data)
         fprintf(stderr, "ERROR: There was not enough memory.\n");
         exit(-2);
     }
+    new->data = data;
 
     list_t tmp = list;
     for (int j = 0; j < i; j++)
     {
         tmp = tmp->next;
     }
-    new->data = data;
     new->next = tmp->next;
     tmp->next = new;
 }
@@ -145,6 +164,7 @@ void Delete(list_t list, int i)
     list_t del = tmp->next;
     tmp->next = del->next;
     free(del);
+    del = NULL;
 }
 
 void Print(list_t list)
@@ -164,7 +184,12 @@ void LinkList(list_t list1, list_t list2)
 {
     if (list1 == list2)
     {
-        fprintf(stderr, "Do you want to make a circular linked list?\n");
+        while (list1->next != NULL)
+        {
+            list1 = list1->next;
+        }
+        list1->next = list2->next;
+        printf("Create circular linked list successfully.\n");
         return;
     }
 
@@ -177,4 +202,24 @@ void LinkList(list_t list1, list_t list2)
     free(list2);
     list2 = NULL;
     printf("Link list 1 and list 2 successful.\n");
+}
+
+void Reverse(list_t list)
+{
+    if (GetLength(list) == 0)
+    {
+        return;
+    }
+
+    list_t pre = list->next;
+    list->next = NULL;
+    list_t tmp;
+
+    while (pre)
+    {
+        tmp = pre;
+        pre = pre->next;
+        tmp->next = list->next;
+        list->next = tmp;
+    }
 }

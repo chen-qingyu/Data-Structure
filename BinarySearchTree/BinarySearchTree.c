@@ -15,6 +15,17 @@ tree_t CreateTree(void)
     return tree;
 }
 
+void DestroyTree(tree_t tree)
+{
+    if (tree)
+    {
+        DestroyTree(tree->left);
+        DestroyTree(tree->right);
+        free(tree);
+        tree = NULL;
+    }
+}
+
 void Traversal(tree_t tree, int type)
 {
     if (tree)
@@ -176,7 +187,6 @@ tree_t Delete(tree_t tree, item_t data)
         }
         else
         {
-
             if (tree->left && tree->right)
             {
                 tmp = FindMin(tree->right);
