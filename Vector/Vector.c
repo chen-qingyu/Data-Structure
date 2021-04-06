@@ -1,5 +1,9 @@
 #include "Vector.h"
 
+#define ERROR (-1)
+
+#define SIZE 100
+
 struct vector
 {
     item_t data[SIZE];

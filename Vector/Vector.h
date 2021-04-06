@@ -22,10 +22,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define ERROR (-1)
-
-#define SIZE 100
-
 typedef int item_t;
 
 typedef struct vector *vector_t;
