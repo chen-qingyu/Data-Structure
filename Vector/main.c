@@ -2,38 +2,38 @@
 
 int main(void)
 {
-    vector_t list1 = CreateVector();
-    vector_t list2 = CreateVector();
+    vector_t vector1 = CreateVector();
+    vector_t vector2 = CreateVector();
 
     item_t a[] = {1, 2, 3, 4};
     item_t b[] = {233, 666, 888, 999};
 
     for (int i = 0; i < sizeof(a) / sizeof(a[0]); i++)
     {
-        Insert(list1, i, a[i]);
-        printf("Insert an item to list 1: %d.\n", a[i]);
+        Insert(vector1, i, a[i]);
+        printf("Insert an item to vector 1: %d.\n", a[i]);
     }
     printf("\n");
 
     for (int i = 0; i < sizeof(b) / sizeof(b[0]); i++)
     {
-        Insert(list2, i, b[i]);
-        printf("Insert an item to list 2: %d.\n", b[i]);
+        Insert(vector2, i, b[i]);
+        printf("Insert an item to vector 2: %d.\n", b[i]);
     }
     printf("\n");
 
-    int length = GetLength(list1);
+    int length = GetLength(vector1);
     for (int i = 0; i < length; i++)
     {
-        Delete(list1, 0);
+        Delete(vector1, 0);
         printf("Delete an item.\n");
     }
-    printf("The list is empty? %s.\n", IsEmpty(list1) ? "yes" : "no");
+    printf("The vector is empty? %s.\n", IsEmpty(vector1) ? "yes" : "no");
     printf("\n");
 
-    DestroyVector(list1);
-    DestroyVector(list2);
-    printf("Destroy list.\n");
+    DestroyVector(vector1);
+    DestroyVector(vector2);
+    printf("Destroy vector.\n");
 
     return 0;
 }
