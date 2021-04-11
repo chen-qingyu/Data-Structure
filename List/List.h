@@ -32,7 +32,6 @@ typedef int item_t;
 typedef struct list *list_t;
 
 /*************************************************
-  Function:       CreateList
   Description:    创建一个空列表
   Input:          空
   Return:         一个指向空列表的指针
@@ -40,15 +39,13 @@ typedef struct list *list_t;
 list_t CreateList(void);
 
 /*************************************************
-  Function:       DestroyList
-  Description:    销毁一个空列表
+  Description:    销毁一个列表
   Input:          一个指向待销毁列表的指针
   Return:         空
 *************************************************/
 void DestroyList(list_t list);
 
 /*************************************************
-  Function:       GetLength
   Description:    求列表长度
   Input:          一个指向列表的指针
   Return:         列表长度
@@ -56,7 +53,6 @@ void DestroyList(list_t list);
 int GetLength(list_t list);
 
 /*************************************************
-  Function:       IsFull
   Description:    判断列表已满
   Input:          一个指向列表的指针
   Return:         如果列表已满则返回true，否则返回false
@@ -64,7 +60,6 @@ int GetLength(list_t list);
 bool IsFull(list_t list);
 
 /*************************************************
-  Function:       IsEmpty
   Description:    判断列表已空
   Input:          一个指向列表的指针
   Return:         如果列表已空则返回true，否则返回false
@@ -72,7 +67,6 @@ bool IsFull(list_t list);
 bool IsEmpty(list_t list);
 
 /*************************************************
-  Function:       Get
   Description:    取列表的第 i 个元素
                   0 <= i < GetLength(list)
   Input:          一个指向列表的指针，一个整数 i
@@ -81,7 +75,6 @@ bool IsEmpty(list_t list);
 item_t Get(list_t list, int i);
 
 /*************************************************
-  Function:       Find
   Description:    求 data 的下标
   Input:          一个指向列表的指针，一个元素 data
   Return:         下标 i 或者 ERROR
@@ -89,7 +82,6 @@ item_t Get(list_t list, int i);
 int Find(list_t list, item_t data);
 
 /*************************************************
-  Function:       Insert
   Description:    在指定位置插入一个元素
   Input:          一个指向列表的指针，下标 i ，元素 data
   Return:         空
@@ -97,7 +89,6 @@ int Find(list_t list, item_t data);
 void Insert(list_t list, int i, item_t data);
 
 /*************************************************
-  Function:       Delete
   Description:    在指定位置删除一个元素
   Input:          一个指向列表的指针，下标 i
   Return:         空
@@ -105,7 +96,6 @@ void Insert(list_t list, int i, item_t data);
 void Delete(list_t list, int i);
 
 /*************************************************
-  Function:       Print
   Description:    输出列表内容
   Input:          一个指向列表的指针
   Return:         空
@@ -113,7 +103,6 @@ void Delete(list_t list, int i);
 void Print(list_t list);
 
 /*************************************************
-  Function:       Reverse
   Description:    就地逆置列表
   Input:          一个指向列表的指针
   Return:         空

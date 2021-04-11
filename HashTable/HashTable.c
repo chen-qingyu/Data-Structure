@@ -69,13 +69,13 @@ int FindPos(table_t table, key_t key)
     return newPos;
 }
 
-int Find(table_t table, key_t key)
+value_t Get(table_t table, key_t key)
 {
     int pos = FindPos(table, key);
 
     if (table[pos].state == FULL)
     {
-        return pos;
+        return table[pos].value;
     }
     else
     {
