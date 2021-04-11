@@ -2,7 +2,7 @@
 
 struct queue
 {
-    tree_t data[SIZE + 1]; // 循环队列，数组容量为队列有效容量加一
+    tree_t data[QUEUE_CAPACITY + 1]; // 循环队列，数组容量为队列有效容量加一
     int front;
     int rear;
 };
@@ -33,12 +33,12 @@ void DestroyQueue(queue_t queue)
 
 int GetLength(queue_t queue)
 {
-    return (queue->rear - queue->front + (SIZE + 1)) % (SIZE + 1);
+    return (queue->rear - queue->front + (QUEUE_CAPACITY + 1)) % (QUEUE_CAPACITY + 1);
 }
 
 bool IsFull(queue_t queue)
 {
-    return GetLength(queue) >= SIZE;
+    return GetLength(queue) >= QUEUE_CAPACITY;
 }
 
 bool IsEmpty(queue_t queue)
@@ -54,7 +54,7 @@ void Enqueue(queue_t queue, tree_t data)
         return;
     }
 
-    queue->rear = (queue->rear + 1) % SIZE;
+    queue->rear = (queue->rear + 1) % QUEUE_CAPACITY;
     queue->data[queue->rear] = data;
 }
 
@@ -66,7 +66,7 @@ tree_t Dequeue(queue_t queue)
         return ERROR;
     }
 
-    queue->front = (queue->front + 1) % SIZE;
+    queue->front = (queue->front + 1) % QUEUE_CAPACITY;
 
     return queue->data[queue->front];
 }

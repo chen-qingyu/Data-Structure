@@ -1,8 +1,4 @@
-#include "LinkedList.h"
-
-#define ERROR (-1)
-
-#define SIZE 100
+#include "List.h"
 
 struct list
 {
@@ -15,7 +11,7 @@ list_t CreateList(void)
     list_t list = (list_t)malloc(sizeof(struct list));
     if (list == NULL)
     {
-        fprintf(stderr, "ERROR: There was not enough memory.\n");
+        fprintf(stderr, "ERROR: (file %s, line %d) There was not enough memory.\n", __FILE__, __LINE__);
         exit(-2);
     }
 
@@ -55,7 +51,7 @@ int GetLength(list_t list)
 
 bool IsFull(list_t list)
 {
-    return GetLength(list) >= SIZE;
+    return GetLength(list) >= LIST_CAPACITY;
 }
 
 bool IsEmpty(list_t list)
@@ -72,22 +68,13 @@ item_t Get(list_t list, int i) // list[i]
     }
 
     list_t current = list->next;
-    int j = 0;
 
-    while (current != NULL && j < i)
+    for (int j = 0; j < i; ++j)
     {
         current = current->next;
-        j++;
     }
 
-    if (current)
-    {
-        return current->data;
-    }
-    else
-    {
-        return ERROR;
-    }
+    return current->data;
 }
 
 int Find(list_t list, item_t data)
@@ -174,37 +161,15 @@ void Print(list_t list)
     int len = GetLength(list);
     for (int i = 0; i < len; i++)
     {
-        printf("%d: %d\n", i, tmp->data);
+        printf("[%d]: %d\n", i, tmp->data);
         tmp = tmp->next;
     }
     printf("That's all.\n");
 }
 
-void LinkList(list_t list1, list_t list2)
-{
-    if (list1 == list2)
-    {
-        while (list1->next != NULL)
-        {
-            list1 = list1->next;
-        }
-        list1->next = list2->next;
-        return;
-    }
-
-    list_t tail = list1;
-    while (tail->next != NULL)
-    {
-        tail = tail->next;
-    }
-    tail->next = list2->next;
-    free(list2);
-    list2 = NULL;
-}
-
 void Reverse(list_t list)
 {
-    if (GetLength(list) == 0)
+    if (GetLength(list) <= 1)
     {
         return;
     }

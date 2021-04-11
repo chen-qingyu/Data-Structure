@@ -51,7 +51,7 @@ int GetLength(stack_t stack)
 
 bool IsFull(stack_t stack)
 {
-    return GetLength(stack) >= SIZE;
+    return GetLength(stack) >= STACK_CAPACITY;
 }
 
 bool IsEmpty(stack_t stack)

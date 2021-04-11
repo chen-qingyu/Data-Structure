@@ -64,7 +64,7 @@ int GetLength(queue_t queue)
 
 bool IsFull(queue_t queue)
 {
-    return GetLength(queue) >= SIZE;
+    return GetLength(queue) >= QUEUE_CAPACITY;
 }
 
 bool IsEmpty(queue_t queue)

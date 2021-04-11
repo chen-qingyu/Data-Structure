@@ -21,5 +21,7 @@ int main(void)
     }
 
     printf("The queue is empty? %s.\n\n", IsEmpty(queue) ? "yes" : "no");
+
+    DestroyQueue(queue);
     return 0;
 }

@@ -22,7 +22,7 @@
 
 #define ERROR (-1)
 
-#define SIZE 100
+#define STACK_CAPACITY 100
 
 typedef int item_t;
 

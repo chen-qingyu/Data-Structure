@@ -9,19 +9,19 @@ int Hash(key_t key)
         index = (index << 5) + *key++;
     }
 
-    return index % SIZE;
+    return index % HASH_CAPACITY;
 }
 
 table_t CreateTable(void)
 {
-    table_t table = (table_t)malloc(sizeof(struct item) * SIZE);
+    table_t table = (table_t)malloc(sizeof(struct item) * HASH_CAPACITY);
     if (table == NULL)
     {
         fprintf(stderr, "ERROR: There was not enough memory.\n");
         exit(-2);
     }
 
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < HASH_CAPACITY; i++)
     {
         table[i].state = EMPTY;
     }
@@ -51,9 +51,9 @@ int FindPos(table_t table, key_t key)
         if (++conflictCnt % 2)
         {
             newPos = currentPos + (conflictCnt + 1) * (conflictCnt + 1) / 4;
-            if (newPos >= SIZE)
+            if (newPos >= HASH_CAPACITY)
             {
-                newPos = newPos % SIZE;
+                newPos = newPos % HASH_CAPACITY;
             }
         }
         else
@@ -61,7 +61,7 @@ int FindPos(table_t table, key_t key)
             newPos = currentPos - conflictCnt * conflictCnt / 4;
             while (newPos < 0)
             {
-                newPos += SIZE;
+                newPos += HASH_CAPACITY;
             }
         }
     }

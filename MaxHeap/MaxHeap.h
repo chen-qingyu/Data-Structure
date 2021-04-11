@@ -18,11 +18,12 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 #define ERROR (-1)
 
-#define SIZE 100
-#define MAX_ITEM 0xFFFF
+#define HEAP_CAPACITY 100
+#define MAX_ITEM INT_MAX
 
 typedef struct heap *heap_t;
 

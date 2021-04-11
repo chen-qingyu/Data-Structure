@@ -26,7 +26,7 @@
 #define ERROR (-1)
 
 #define VERTEX_NUMBER 7
-#define NO_PATH 0xFFFF
+#define NO_PATH INT_MAX
 
 /* 注释掉此行变成无向图 */
 // #define UNDIRECTED
@@ -43,8 +43,6 @@ struct graph
     int edgeNum;
     edge_t matrix[VERTEX_NUMBER][VERTEX_NUMBER]; // 邻接矩阵
 };
-
-
 
 graph_t CreateGraph(void);
 void DestroyGraph(graph_t G);

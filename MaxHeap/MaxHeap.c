@@ -3,7 +3,7 @@
 heap_t CreateHeap(void)
 {
     heap_t heap = (heap_t)malloc(sizeof(struct heap));
-    heap->data = (item_t *)malloc((SIZE + 1) * sizeof(item_t));
+    heap->data = (item_t *)malloc((HEAP_CAPACITY + 1) * sizeof(item_t));
     if (heap->data == NULL)
     {
         fprintf(stderr, "ERROR: There was not enough memory.\n");
@@ -11,7 +11,7 @@ heap_t CreateHeap(void)
     }
 
     heap->size = 0;
-    heap->capacity = SIZE;
+    heap->capacity = HEAP_CAPACITY;
     heap->data[0] = MAX_ITEM;
 
     return heap;

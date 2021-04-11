@@ -21,7 +21,7 @@
 
 #define ERROR (-1)
 
-#define SIZE 100
+#define QUEUE_CAPACITY 100
 
 typedef int item_t;
 
