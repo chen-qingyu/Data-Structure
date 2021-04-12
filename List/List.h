@@ -33,78 +33,82 @@ typedef struct list *list_t;
 
 /*************************************************
   Description:    创建一个空列表
-  Input:          空
+  Parameter:      空
   Return:         一个指向空列表的指针
 *************************************************/
 list_t CreateList(void);
 
 /*************************************************
-  Description:    销毁一个列表
-  Input:          一个指向待销毁列表的指针
+  Description:    销毁一个列表 list
+  Parameter:      一个指向待销毁列表的指针 list
   Return:         空
 *************************************************/
 void DestroyList(list_t list);
 
 /*************************************************
-  Description:    求列表长度
-  Input:          一个指向列表的指针
+  Description:    求列表 list 的长度
+  Parameter:      一个指向列表的指针 list
   Return:         列表长度
 *************************************************/
 int GetLength(list_t list);
 
 /*************************************************
-  Description:    判断列表已满
-  Input:          一个指向列表的指针
-  Return:         如果列表已满则返回true，否则返回false
+  Description:    判断列表 list 是否已满
+  Parameter:      一个指向列表的指针 list
+  Return:         如果列表已满则返回 true ，否则返回 false
 *************************************************/
 bool IsFull(list_t list);
 
 /*************************************************
-  Description:    判断列表已空
-  Input:          一个指向列表的指针
-  Return:         如果列表已空则返回true，否则返回false
+  Description:    判断列表 list 是否已空
+  Parameter:      一个指向列表的指针 list
+  Return:         如果列表已空则返回 true ，否则返回 false
 *************************************************/
 bool IsEmpty(list_t list);
 
 /*************************************************
-  Description:    取列表的第 i 个元素
-                  0 <= i < GetLength(list)
-  Input:          一个指向列表的指针，一个整数 i
+  Description:    取列表 list 的第 i 个元素
+  Parameter:      一个指向列表的指针 list
+                  下标 i (0 <= i < GetLength(list))
   Return:         第 i 个元素
 *************************************************/
 item_t Get(list_t list, int i);
 
 /*************************************************
-  Description:    求 data 的下标
-  Input:          一个指向列表的指针，一个元素 data
-  Return:         下标 i 或者 ERROR
+  Description:    求元素 data 在列表 list 中的下标
+  Parameter:      一个指向列表的指针 list
+                  一个待寻找元素 data
+  Return:         待寻找元素 data 的下标 i 或者 ERROR
 *************************************************/
 int Find(list_t list, item_t data);
 
 /*************************************************
-  Description:    在指定位置插入一个元素
-  Input:          一个指向列表的指针，下标 i ，元素 data
+  Description:    在列表 list 的下标为 i 的位置上插入一个元素 data
+  Parameter:      一个指向列表的指针 list
+                  下标 i (0 <= i <= GetLength(list))
+                  待插入元素 data
   Return:         空
 *************************************************/
 void Insert(list_t list, int i, item_t data);
 
 /*************************************************
-  Description:    在指定位置删除一个元素
-  Input:          一个指向列表的指针，下标 i
+  Description:    从列表 list 当中删除下标为 i 的元素
+  Parameter:      一个指向列表的指针 list
+                  下标 i (0 <= i < GetLength(list))
   Return:         空
 *************************************************/
 void Delete(list_t list, int i);
 
 /*************************************************
-  Description:    输出列表内容
-  Input:          一个指向列表的指针
+  Description:    输出列表 list 的内容
+  Parameter:      一个指向列表的指针 list
   Return:         空
 *************************************************/
 void Print(list_t list);
 
 /*************************************************
-  Description:    就地逆置列表
-  Input:          一个指向列表的指针
+  Description:    就地逆置列表 list
+  Parameter:      一个指向列表的指针 list
   Return:         空
 *************************************************/
 void Reverse(list_t list);

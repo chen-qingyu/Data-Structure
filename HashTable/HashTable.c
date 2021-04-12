@@ -23,6 +23,7 @@ table_t CreateTable(void)
 
     for (int i = 0; i < HASH_CAPACITY; i++)
     {
+        table[i].key = NULL;
         table[i].state = EMPTY;
     }
 
@@ -33,6 +34,13 @@ void DestroyTable(table_t table)
 {
     if (table)
     {
+        for (int i = 0; i < HASH_CAPACITY; ++i)
+        {
+            if (table[i].key)
+            {
+                free(table[i].key);
+            }
+        }
         free(table);
         table = NULL;
     }
@@ -103,7 +111,19 @@ void Insert(table_t table, key_t key, value_t value)
 
     if (table[pos].state != FULL)
     {
+        if (table[pos].state == DELETED)
+        {
+            free(table[pos].key);
+            table[pos].key = NULL;
+        }
         table[pos].state = FULL;
+        table[pos].key = (char *)malloc(strlen(key) * sizeof(char) + 1);
+        if (table[pos].key == NULL)
+        {
+            fprintf(stderr, "ERROR: There was not enough memory.\n");
+            exit(-2);
+        }
+
         strcpy(table[pos].key, key);
         table[pos].value = value;
     }

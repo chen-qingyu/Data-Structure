@@ -22,9 +22,8 @@
 #define ERROR (-1)
 
 #define HASH_CAPACITY 17
-#define MAX_KEY_SIZE 10
 
-typedef char key_t[MAX_KEY_SIZE];
+typedef char *key_t;
 
 typedef int value_t;
 
@@ -46,42 +45,47 @@ typedef struct item *table_t;
 
 /*************************************************
   Description:    创建一个空散列表
-  Input:          空
+  Parameter:      空
   Return:         一个指向空散列表的指针
 *************************************************/
 table_t CreateTable(void);
 
 /*************************************************
-  Description:    销毁一个散列表
-  Input:          一个指向待销毁散列表的指针
+  Description:    销毁一个散列表 table
+  Parameter:      一个指向待销毁散列表的指针 table
   Return:         空
 *************************************************/
 void DestroyTable(table_t table);
 
 /*************************************************
-  Description:    取key对应的value
-  Input:          一个指向散列表的指针， 一个key
-  Return:         key对应的value或者ERROR
+  Description:    在散列表 table 中取 key 对应的 value
+  Parameter:      一个指向散列表的指针 table
+                  一个 key
+  Return:         key 对应的 value 或者 ERROR
 *************************************************/
 value_t Get(table_t table, key_t key);
 
 /*************************************************
-  Description:    修改key对应的value
-  Input:          一个指向散列表的指针， 一个key，一个新的value
+  Description:    在散列表 table 中修改 key 对应的 value
+  Parameter:      一个指向散列表的指针 table
+                  一个 key
+                  一个新的 value
   Return:         空
 *************************************************/
 void Modify(table_t table, key_t key, value_t value);
 
 /*************************************************
-  Description:    插入一个键值对
-  Input:          一个指向散列表的指针， 一对新的key和value
+  Description:    在散列表 table 中插入一个新的键值对
+  Parameter:      一个指向散列表的指针 table
+                  一对新的 key 和 value
   Return:         空
 *************************************************/
 void Insert(table_t table, key_t key, value_t value);
 
 /*************************************************
-  Description:    删除一个键值对
-  Input:          一个指向散列表的指针， 待删除键值对的key
+  Description:    在散列表 table 中删除 key 对应的键值对
+  Parameter:      一个指向散列表的指针 table
+                  待删除键值对的 key
   Return:         空
 *************************************************/
 void Delete(table_t table, key_t key);

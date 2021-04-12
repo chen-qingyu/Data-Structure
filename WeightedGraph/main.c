@@ -1,8 +1,12 @@
 #include "WeightedGraph.h"
 
+void Visit(vertex_t V)
+{
+    printf("Visiting vertex: %d\n", V);
+}
+
 int main(void)
 {
-    extern bool visited[];
     graph_t G = CreateGraph();
 
     Link(G, 0, 1, 2);
@@ -33,13 +37,11 @@ int main(void)
     printf("\n");
 
     printf("BFS from V0:\n");
-    CleanFlag();
-    BFS(G, 0);
+    BFS(G, 0, Visit);
     printf("\n");
 
     printf("DFS from V0:\n");
-    CleanFlag();
-    DFS(G, 0);
+    DFS(G, 0, Visit);
     printf("\n");
 
     int dist[VERTEX_NUMBER] = {NO_PATH};
@@ -67,7 +69,7 @@ int main(void)
     printf("\n");
 
     DestroyGraph(G);
-    printf("Destroy graph.\n");
+    printf("Destroy graph...\n");
 
     return 0;
 }

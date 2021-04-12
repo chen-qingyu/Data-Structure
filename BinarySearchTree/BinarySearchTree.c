@@ -26,7 +26,7 @@ void DestroyTree(tree_t tree)
     }
 }
 
-void Traversal(tree_t tree, int type)
+void Traversal(tree_t tree, traversal_t type, void (*pTrav)(item_t data))
 {
     if (tree)
     {
@@ -35,25 +35,25 @@ void Traversal(tree_t tree, int type)
             // 先序遍历
             case PRE_ORDER:
             {
-                printf("%d ", tree->data);
-                Traversal(tree->left, PRE_ORDER);
-                Traversal(tree->right, PRE_ORDER);
+                pTrav(tree->data);
+                Traversal(tree->left, PRE_ORDER, pTrav);
+                Traversal(tree->right, PRE_ORDER, pTrav);
                 break;
             }
             // 中序遍历
             case IN_ORDER:
             {
-                Traversal(tree->left, IN_ORDER);
-                printf("%d ", tree->data);
-                Traversal(tree->right, IN_ORDER);
+                Traversal(tree->left, IN_ORDER, pTrav);
+                pTrav(tree->data);
+                Traversal(tree->right, IN_ORDER, pTrav);
                 break;
             }
             // 后序遍历
             case POST_ORDER:
             {
-                Traversal(tree->left, POST_ORDER);
-                Traversal(tree->right, POST_ORDER);
-                printf("%d ", tree->data);
+                Traversal(tree->left, POST_ORDER, pTrav);
+                Traversal(tree->right, POST_ORDER, pTrav);
+                pTrav(tree->data);
                 break;
             }
             // 层次遍历
@@ -69,7 +69,7 @@ void Traversal(tree_t tree, int type)
                 while (!IsEmpty(Q))
                 {
                     T = Dequeue(Q);
-                    printf("%d ", T->data);
+                    pTrav(T->data);
                     if (T->left)
                     {
                         Enqueue(Q, T->left);
@@ -79,6 +79,7 @@ void Traversal(tree_t tree, int type)
                         Enqueue(Q, T->right);
                     }
                 }
+                DestroyQueue(Q);
                 break;
             }
             default:
@@ -90,7 +91,7 @@ void Traversal(tree_t tree, int type)
     }
 }
 
-tree_t Find(tree_t tree, item_t data)
+tree_t Find(const tree_t tree, const item_t data)
 {
     tree_t current = tree;
 
@@ -113,7 +114,7 @@ tree_t Find(tree_t tree, item_t data)
     return NULL;
 }
 
-tree_t FindMin(tree_t tree)
+tree_t FindMin(const tree_t tree)
 {
     tree_t current = tree;
 
@@ -128,7 +129,7 @@ tree_t FindMin(tree_t tree)
     return current;
 }
 
-tree_t FindMax(tree_t tree)
+tree_t FindMax(const tree_t tree)
 {
     tree_t current = tree;
 
@@ -143,7 +144,7 @@ tree_t FindMax(tree_t tree)
     return current;
 }
 
-tree_t Insert(tree_t tree, item_t data)
+tree_t Insert(tree_t tree, const item_t data)
 {
     if (!tree)
     {
@@ -167,7 +168,7 @@ tree_t Insert(tree_t tree, item_t data)
     return tree;
 }
 
-tree_t Delete(tree_t tree, item_t data)
+tree_t Delete(tree_t tree, const item_t data)
 {
     tree_t tmp;
 

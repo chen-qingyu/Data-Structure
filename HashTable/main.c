@@ -11,23 +11,23 @@ int main(void)
     Insert(table, "ddd", 4);
     printf("Inserted.\n\n");
 
-    int a = Find(table, "aaa");
-    printf("[%2d] %s: %d\n", a, table[a].key, table[a].value);
-    int b = Find(table, "bbb");
-    printf("[%2d] %s: %d\n", b, table[b].key, table[b].value);
-    int c = Find(table, "ccc");
-    printf("[%2d] %s: %d\n", c, table[c].key, table[c].value);
-    int d = Find(table, "ddd");
-    printf("[%2d] %s: %d\n", d, table[d].key, table[d].value);
+    value_t a = Get(table, "aaa");
+    printf("\"aaa\": %d\n", a);
+    value_t b = Get(table, "bbb");
+    printf("\"bbb\": %d\n", b);
+    value_t c = Get(table, "ccc");
+    printf("\"ccc\": %d\n", c);
+    value_t d = Get(table, "ddd");
+    printf("\"ddd\": %d\n", d);
     printf("\n");
 
     Modify(table, "aaa", 233);
-    printf("Modified: %s: %d\n", table[a].key, table[a].value);
+    printf("Modified: \"aaa\": %d\n", Get(table, "aaa"));
     printf("\n");
 
     Delete(table, "aaa");
     printf("Delete \"aaa\".\n");
-    a = Find(table, "aaa");
+    a = Get(table, "aaa");
     if (a == ERROR)
     {
         printf("Deleted successful.\n");
@@ -38,7 +38,7 @@ int main(void)
     }
     printf("\n");
 
-    printf("Destroy table.\n");
+    printf("Destroy table...\n");
     DestroyTable(table);
 
     return 0;

@@ -47,12 +47,7 @@ bool IsAdjacent(graph_t G, vertex_t V1, vertex_t V2)
     return G->matrix[V1][V2] != NO_PATH ? true : false;
 }
 
-void Visit(vertex_t V)
-{
-    printf("Visiting vertex: %d\n", V);
-}
-
-void CleanFlag(void)
+static void CleanVisitedFlag(void)
 {
     for (vertex_t i = 0; i < VERTEX_NUMBER; i++)
     {
@@ -60,12 +55,35 @@ void CleanFlag(void)
     }
 }
 
-void BFS(graph_t G, vertex_t startV)
+void _DFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V))
 {
+    vertex_t V1, V2;
+
+    pVisit(startV);
+    visited[startV] = true;
+
+    for (V2 = 0; V2 < G->vertexNum; V2++)
+    {
+        if (IsAdjacent(G, startV, V2) && !visited[V2])
+        {
+            _DFS(G, V2, pVisit);
+        }
+    }
+}
+
+void DFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V))
+{
+    CleanVisitedFlag();
+    _DFS(G, startV, pVisit);
+}
+
+void BFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V))
+{
+    CleanVisitedFlag();
     queue_t Q = CreateQueue();
     vertex_t V1, V2;
 
-    Visit(startV);
+    pVisit(startV);
     visited[startV] = true;
     Enqueue(Q, startV);
 
@@ -76,26 +94,10 @@ void BFS(graph_t G, vertex_t startV)
         {
             if (!visited[V2] && IsAdjacent(G, V1, V2))
             {
-                Visit(V2);
+                pVisit(V2);
                 visited[V2] = true;
                 Enqueue(Q, V2);
             }
-        }
-    }
-}
-
-void DFS(graph_t G, vertex_t startV)
-{
-    vertex_t V1, V2;
-
-    Visit(startV);
-    visited[startV] = true;
-
-    for (V2 = 0; V2 < G->vertexNum; V2++)
-    {
-        if (IsAdjacent(G, startV, V2) && !visited[V2])
-        {
-            DFS(G, V2);
         }
     }
 }
@@ -166,7 +168,7 @@ bool Dijkstra(graph_t G, edge_t dist[], vertex_t path[], vertex_t startV)
     return true;
 }
 
-bool Floyd(graph_t G, edge_t D[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER])
+bool Floyd(graph_t G, edge_t dist[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER])
 {
     vertex_t i, j, k;
 
@@ -174,7 +176,7 @@ bool Floyd(graph_t G, edge_t D[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER])
     {
         for (j = 0; j < G->vertexNum; j++)
         {
-            D[i][j] = G->matrix[i][j];
+            dist[i][j] = G->matrix[i][j];
             path[i][j] = -1;
         }
     }
@@ -185,10 +187,10 @@ bool Floyd(graph_t G, edge_t D[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER])
         {
             for (j = 0; j < G->vertexNum; j++)
             {
-                if (D[i][k] + D[k][j] < D[i][j])
+                if (dist[i][k] + dist[k][j] < dist[i][j])
                 {
-                    D[i][j] = D[i][k] + D[k][j];
-                    if (i == j && D[i][j] < 0)
+                    dist[i][j] = dist[i][k] + dist[k][j];
+                    if (i == j && dist[i][j] < 0)
                     {
                         return false;
                     }
