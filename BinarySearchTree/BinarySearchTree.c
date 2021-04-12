@@ -91,7 +91,7 @@ void Traversal(tree_t tree, traversal_t type, void (*pTrav)(item_t data))
     }
 }
 
-tree_t Find(const tree_t tree, const item_t data)
+tree_t Find(const tree_t tree, item_t data)
 {
     tree_t current = tree;
 
@@ -144,7 +144,7 @@ tree_t FindMax(const tree_t tree)
     return current;
 }
 
-tree_t Insert(tree_t tree, const item_t data)
+tree_t Insert(tree_t tree, item_t data)
 {
     if (!tree)
     {
@@ -168,7 +168,7 @@ tree_t Insert(tree_t tree, const item_t data)
     return tree;
 }
 
-tree_t Delete(tree_t tree, const item_t data)
+tree_t Delete(tree_t tree, item_t data)
 {
     tree_t tmp;
 

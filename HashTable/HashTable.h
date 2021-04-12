@@ -4,7 +4,7 @@
 操作集：散列表 table 属于 table_t ，键 key 属于 key_t ，值 value 属于 value_t ，基本操作有：
     1. table_t CreateTable(void)
     2. void DestroyTable(table_t table)
-    3. value_t Get(table_t table, key_t key)
+    3. value_t Get(const table_t table, key_t key)
     4. void Modify(table_t table, key_t key, value_t value)
     5. void Insert(table_t table, key_t key, value_t value)
     6. void Delete(table_t table, key_t key)
@@ -63,7 +63,7 @@ void DestroyTable(table_t table);
                   一个 key
   Return:         key 对应的 value 或者 ERROR
 *************************************************/
-value_t Get(table_t table, key_t key);
+value_t Get(const table_t table, key_t key);
 
 /*************************************************
   Description:    在散列表 table 中修改 key 对应的 value

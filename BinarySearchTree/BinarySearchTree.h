@@ -5,11 +5,11 @@
     1. tree_t CreateTree(void)
     2. void DestroyTree(tree_t tree)
     3. void Traversal(tree_t tree, traversal_t type, void (*pTrav)(item_t data))
-    4. tree_t Find(const tree_t tree, const item_t data)
+    4. tree_t Find(const tree_t tree, item_t data)
     5. tree_t FindMin(const tree_t tree)
     6. tree_t FindMax(const tree_t tree)
-    7. tree_t Insert(tree_t tree, const item_t data)
-    8. tree_t Delete(tree_t tree, const item_t data)
+    7. tree_t Insert(tree_t tree, item_t data)
+    8. tree_t Delete(tree_t tree, item_t data)
 */
 
 #ifndef BINARY_SEARCH_TREE_H
@@ -76,7 +76,7 @@ void Traversal(tree_t tree, traversal_t type, void (*pTrav)(item_t data));
                   一个待寻找元素 data
   Return:         元素 data 所在的结点或者 NULL
 *************************************************/
-tree_t Find(const tree_t tree, const item_t data);
+tree_t Find(const tree_t tree, item_t data);
 
 /*************************************************
   Description:    在一个二叉搜索树 tree 中寻找最小元素
@@ -98,7 +98,7 @@ tree_t FindMax(const tree_t tree);
                   一个待插入元素 data
   Return:         插入元素后的二叉搜索树 tree
 *************************************************/
-tree_t Insert(tree_t tree, const item_t data);
+tree_t Insert(tree_t tree, item_t data);
 
 /*************************************************
   Description:    在一个二叉搜索树 tree 中删除元素 data
@@ -106,6 +106,6 @@ tree_t Insert(tree_t tree, const item_t data);
                   一个待删除元素 data
   Return:         删除元素后的二叉搜索树 tree
 *************************************************/
-tree_t Delete(tree_t tree, const item_t data);
+tree_t Delete(tree_t tree, item_t data);
 
 #endif

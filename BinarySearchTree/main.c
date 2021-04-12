@@ -36,7 +36,7 @@ int main(void)
     printf("\n");
 
     DestroyTree(tree);
-    printf("Destroy tree.\n");
+    printf("Destroy tree...\n");
 
     return 0;
 }

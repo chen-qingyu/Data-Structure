@@ -46,7 +46,7 @@ void DestroyTable(table_t table)
     }
 }
 
-int FindPos(table_t table, key_t key)
+int FindPos(const table_t table, key_t key)
 {
     int currentPos, newPos;
     int conflictCnt = 0;
@@ -77,7 +77,7 @@ int FindPos(table_t table, key_t key)
     return newPos;
 }
 
-value_t Get(table_t table, key_t key)
+value_t Get(const table_t table, key_t key)
 {
     int pos = FindPos(table, key);
 
