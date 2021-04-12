@@ -1,6 +1,10 @@
 #include "HashTable.h"
 
-int Hash(key_t key)
+/*******************************
+Helper functions implementation.
+*******************************/
+
+static int Hash(key_t key)
 {
     unsigned int index = 0;
 
@@ -11,6 +15,41 @@ int Hash(key_t key)
 
     return index % HASH_CAPACITY;
 }
+
+static int FindPos(const table_t table, key_t key)
+{
+    int currentPos, newPos;
+    int conflictCnt = 0;
+
+    currentPos = Hash(key);
+    newPos = currentPos;
+
+    while (table[newPos].state != EMPTY && strcmp(table[newPos].key, key) != 0)
+    {
+        if (++conflictCnt % 2)
+        {
+            newPos = currentPos + (conflictCnt + 1) * (conflictCnt + 1) / 4;
+            if (newPos >= HASH_CAPACITY)
+            {
+                newPos = newPos % HASH_CAPACITY;
+            }
+        }
+        else
+        {
+            newPos = currentPos - conflictCnt * conflictCnt / 4;
+            while (newPos < 0)
+            {
+                newPos += HASH_CAPACITY;
+            }
+        }
+    }
+
+    return newPos;
+}
+
+/*******************************
+Interface functions implementation.
+*******************************/
 
 table_t CreateTable(void)
 {
@@ -44,37 +83,6 @@ void DestroyTable(table_t table)
         free(table);
         table = NULL;
     }
-}
-
-int FindPos(const table_t table, key_t key)
-{
-    int currentPos, newPos;
-    int conflictCnt = 0;
-
-    currentPos = Hash(key);
-    newPos = currentPos;
-
-    while (table[newPos].state != EMPTY && strcmp(table[newPos].key, key) != 0)
-    {
-        if (++conflictCnt % 2)
-        {
-            newPos = currentPos + (conflictCnt + 1) * (conflictCnt + 1) / 4;
-            if (newPos >= HASH_CAPACITY)
-            {
-                newPos = newPos % HASH_CAPACITY;
-            }
-        }
-        else
-        {
-            newPos = currentPos - conflictCnt * conflictCnt / 4;
-            while (newPos < 0)
-            {
-                newPos += HASH_CAPACITY;
-            }
-        }
-    }
-
-    return newPos;
 }
 
 value_t Get(const table_t table, key_t key)

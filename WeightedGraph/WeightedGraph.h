@@ -5,11 +5,11 @@
     1. graph_t CreateGraph(void)
     2. void DestroyGraph(graph_t G)
     3. void Link(graph_t G, vertex_t V1, vertex_t V2, edge_t E)
-    4. bool IsAdjacent(graph_t G, vertex_t V1, vertex_t V2)
+    4. bool IsAdjacent(const graph_t G, vertex_t V1, vertex_t V2)
     5. void DFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V))
     6. void BFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V))
-    7. bool Dijkstra(graph_t G, edge_t dist[], vertex_t path[], vertex_t startV)
-    8. bool Floyd(graph_t G, edge_t dist[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER])
+    7. bool Dijkstra(const graph_t G, edge_t dist[], vertex_t path[], vertex_t startV)
+    8. bool Floyd(const graph_t G, edge_t dist[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER])
 */
 
 #ifndef WEIGHTED_GRAPH_H
@@ -71,7 +71,7 @@ void Link(graph_t G, vertex_t V1, vertex_t V2, edge_t E);
                   两个顶点 V1 V2
   Return:         如果两个顶点已链接则返回 true ，否则返回 false
 *************************************************/
-bool IsAdjacent(graph_t G, vertex_t V1, vertex_t V2);
+bool IsAdjacent(const graph_t G, vertex_t V1, vertex_t V2);
 
 /*************************************************
   Description:    深度优先遍历一个图 G
@@ -99,7 +99,7 @@ void BFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V));
                   遍历起始点 startV
   Return:         如果成功执行返回 true ，否则返回 false
 *************************************************/
-bool Dijkstra(graph_t G, edge_t dist[], vertex_t path[], vertex_t startV);
+bool Dijkstra(const graph_t G, edge_t dist[], vertex_t path[], vertex_t startV);
 
 /*************************************************
   Description:    Floyd算法遍历一个图 G
@@ -108,6 +108,6 @@ bool Dijkstra(graph_t G, edge_t dist[], vertex_t path[], vertex_t startV);
                   路径数组 path
   Return:         如果成功执行返回 true ，否则返回 false
 *************************************************/
-bool Floyd(graph_t G, edge_t dist[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER]);
+bool Floyd(const graph_t G, edge_t dist[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER]);
 
 #endif

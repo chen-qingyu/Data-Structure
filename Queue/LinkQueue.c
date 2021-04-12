@@ -14,6 +14,14 @@ struct node
     node_t next;
 };
 
+/*******************************
+Helper functions implementation.
+*******************************/
+
+/*******************************
+Interface functions implementation.
+*******************************/
+
 queue_t CreateQueue(void)
 {
     queue_t queue = (queue_t)malloc(sizeof(struct queue));
@@ -48,7 +56,7 @@ void DestroyQueue(queue_t queue)
     }
 }
 
-int GetLength(queue_t queue)
+int GetLength(const queue_t queue)
 {
     node_t current = queue->front;
     int length = 0;
@@ -62,12 +70,12 @@ int GetLength(queue_t queue)
     return length;
 }
 
-bool IsFull(queue_t queue)
+bool IsFull(const queue_t queue)
 {
     return GetLength(queue) >= QUEUE_CAPACITY;
 }
 
-bool IsEmpty(queue_t queue)
+bool IsEmpty(const queue_t queue)
 {
     return queue->front == NULL;
 }

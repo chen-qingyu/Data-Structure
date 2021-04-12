@@ -6,6 +6,14 @@ struct list
     list_t next;
 };
 
+/*******************************
+Helper functions implementation.
+*******************************/
+
+/*******************************
+Interface functions implementation.
+*******************************/
+
 list_t CreateList(void)
 {
     list_t list = (list_t)malloc(sizeof(struct list));
@@ -35,7 +43,7 @@ void DestroyList(list_t list)
     }
 }
 
-int GetLength(list_t list)
+int GetLength(const list_t list)
 {
     list_t current = list->next;
     int length = 0;
@@ -49,17 +57,17 @@ int GetLength(list_t list)
     return length;
 }
 
-bool IsFull(list_t list)
+bool IsFull(const list_t list)
 {
     return GetLength(list) >= LIST_CAPACITY;
 }
 
-bool IsEmpty(list_t list)
+bool IsEmpty(const list_t list)
 {
     return list->next == NULL;
 }
 
-item_t Get(list_t list, int i) // list[i]
+item_t Get(const list_t list, int i) // list[i]
 {
     if (i < 0 || i > (GetLength(list) - 1))
     {
@@ -77,7 +85,7 @@ item_t Get(list_t list, int i) // list[i]
     return current->data;
 }
 
-int Find(list_t list, item_t data)
+int Find(const list_t list, item_t data)
 {
     int index = 0;
     list_t current = list->next;
@@ -154,7 +162,7 @@ void Delete(list_t list, int i)
     del = NULL;
 }
 
-void Print(list_t list)
+void Print(const list_t list)
 {
     printf("Now print the list elements:\n");
     list_t tmp = list->next;

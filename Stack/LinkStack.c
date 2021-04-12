@@ -6,6 +6,14 @@ struct stack
     stack_t next;
 };
 
+/*******************************
+Helper functions implementation.
+*******************************/
+
+/*******************************
+Interface functions implementation.
+*******************************/
+
 stack_t CreateStack(void)
 {
     stack_t stack = (stack_t)malloc(sizeof(struct stack));
@@ -35,7 +43,7 @@ void DestroyStack(stack_t stack)
     }
 }
 
-int GetLength(stack_t stack)
+int GetLength(const stack_t stack)
 {
     stack_t current = stack->next;
     int length = 0;
@@ -49,12 +57,12 @@ int GetLength(stack_t stack)
     return length;
 }
 
-bool IsFull(stack_t stack)
+bool IsFull(const stack_t stack)
 {
     return GetLength(stack) >= STACK_CAPACITY;
 }
 
-bool IsEmpty(stack_t stack)
+bool IsEmpty(const stack_t stack)
 {
     return stack->next == NULL;
 }
@@ -95,7 +103,7 @@ item_t Pop(stack_t stack)
     return data;
 }
 
-item_t Top(stack_t stack)
+item_t Top(const stack_t stack)
 {
     if (IsEmpty(stack))
     {

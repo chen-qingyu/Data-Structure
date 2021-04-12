@@ -4,14 +4,14 @@
 操作集：列表 list 属于 list_t ，整数 i 表示元素下标(从0开始)，元素 data 属于 item_t ，基本操作有：
     1. list_t CreateList(void)
     2. void DestroyList(list_t list)
-    3. int GetLength(list_t list)
-    4. bool IsFull(list_t list)
-    5. bool IsEmpty(list_t list)
-    6. item_t Get(list_t list, int i)
-    7. int Find(list_t list, item_t data)
+    3. int GetLength(const list_t list)
+    4. bool IsFull(const list_t list)
+    5. bool IsEmpty(const list_t list)
+    6. item_t Get(const list_t list, int i)
+    7. int Find(const list_t list, item_t data)
     8. void Insert(list_t list, int i, item_t data)
     9. void Delete(list_t list, int i)
-    10. void Print(list_t list)
+    10. void Print(const list_t list)
     11. void Reverse(list_t list);
 */
 
@@ -50,21 +50,21 @@ void DestroyList(list_t list);
   Parameter:      一个指向列表的指针 list
   Return:         列表长度
 *************************************************/
-int GetLength(list_t list);
+int GetLength(const list_t list);
 
 /*************************************************
   Description:    判断列表 list 是否已满
   Parameter:      一个指向列表的指针 list
   Return:         如果列表已满则返回 true ，否则返回 false
 *************************************************/
-bool IsFull(list_t list);
+bool IsFull(const list_t list);
 
 /*************************************************
   Description:    判断列表 list 是否已空
   Parameter:      一个指向列表的指针 list
   Return:         如果列表已空则返回 true ，否则返回 false
 *************************************************/
-bool IsEmpty(list_t list);
+bool IsEmpty(const list_t list);
 
 /*************************************************
   Description:    取列表 list 的第 i 个元素
@@ -72,7 +72,7 @@ bool IsEmpty(list_t list);
                   下标 i (0 <= i < GetLength(list))
   Return:         第 i 个元素
 *************************************************/
-item_t Get(list_t list, int i);
+item_t Get(const list_t list, int i);
 
 /*************************************************
   Description:    求元素 data 在列表 list 中的下标
@@ -80,7 +80,7 @@ item_t Get(list_t list, int i);
                   一个待寻找元素 data
   Return:         待寻找元素 data 的下标 i 或者 ERROR
 *************************************************/
-int Find(list_t list, item_t data);
+int Find(const list_t list, item_t data);
 
 /*************************************************
   Description:    在列表 list 的下标为 i 的位置上插入一个元素 data
@@ -104,7 +104,7 @@ void Delete(list_t list, int i);
   Parameter:      一个指向列表的指针 list
   Return:         空
 *************************************************/
-void Print(list_t list);
+void Print(const list_t list);
 
 /*************************************************
   Description:    就地逆置列表 list

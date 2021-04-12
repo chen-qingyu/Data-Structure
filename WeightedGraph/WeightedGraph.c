@@ -2,6 +2,55 @@
 
 bool visited[VERTEX_NUMBER] = {false};
 
+/*******************************
+Helper functions implementation.
+*******************************/
+
+static void CleanVisitedFlag(void)
+{
+    for (vertex_t i = 0; i < VERTEX_NUMBER; i++)
+    {
+        visited[i] = false;
+    }
+}
+
+static void _DFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V))
+{
+    vertex_t V1, V2;
+
+    pVisit(startV);
+    visited[startV] = true;
+
+    for (V2 = 0; V2 < G->vertexNum; V2++)
+    {
+        if (IsAdjacent(G, startV, V2) && !visited[V2])
+        {
+            _DFS(G, V2, pVisit);
+        }
+    }
+}
+
+static vertex_t FindMinDist(const graph_t G, edge_t dist[], bool collected[])
+{
+    vertex_t MinV, V;
+    int minDist = NO_PATH;
+
+    for (V = 0; V < G->vertexNum; V++)
+    {
+        if (collected[V] == false && dist[V] < minDist)
+        {
+            minDist = dist[V];
+            MinV = V;
+        }
+    }
+
+    return (minDist < NO_PATH) ? MinV : ERROR;
+}
+
+/*******************************
+Interface functions implementation.
+*******************************/
+
 graph_t CreateGraph(void)
 {
     graph_t G = (graph_t)malloc(sizeof(struct graph));
@@ -42,33 +91,9 @@ void Link(graph_t G, vertex_t V1, vertex_t V2, edge_t E)
 #endif
 }
 
-bool IsAdjacent(graph_t G, vertex_t V1, vertex_t V2)
+bool IsAdjacent(const graph_t G, vertex_t V1, vertex_t V2)
 {
     return G->matrix[V1][V2] != NO_PATH ? true : false;
-}
-
-static void CleanVisitedFlag(void)
-{
-    for (vertex_t i = 0; i < VERTEX_NUMBER; i++)
-    {
-        visited[i] = false;
-    }
-}
-
-void _DFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V))
-{
-    vertex_t V1, V2;
-
-    pVisit(startV);
-    visited[startV] = true;
-
-    for (V2 = 0; V2 < G->vertexNum; V2++)
-    {
-        if (IsAdjacent(G, startV, V2) && !visited[V2])
-        {
-            _DFS(G, V2, pVisit);
-        }
-    }
 }
 
 void DFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V))
@@ -102,24 +127,7 @@ void BFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V))
     }
 }
 
-vertex_t FindMinDist(graph_t G, edge_t dist[], bool collected[])
-{
-    vertex_t MinV, V;
-    int minDist = NO_PATH;
-
-    for (V = 0; V < G->vertexNum; V++)
-    {
-        if (collected[V] == false && dist[V] < minDist)
-        {
-            minDist = dist[V];
-            MinV = V;
-        }
-    }
-
-    return (minDist < NO_PATH) ? MinV : ERROR;
-}
-
-bool Dijkstra(graph_t G, edge_t dist[], vertex_t path[], vertex_t startV)
+bool Dijkstra(const graph_t G, edge_t dist[], vertex_t path[], vertex_t startV)
 {
     bool collected[VERTEX_NUMBER] = {false};
     vertex_t V1, V2;
@@ -168,7 +176,7 @@ bool Dijkstra(graph_t G, edge_t dist[], vertex_t path[], vertex_t startV)
     return true;
 }
 
-bool Floyd(graph_t G, edge_t dist[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER])
+bool Floyd(const graph_t G, edge_t dist[][VERTEX_NUMBER], vertex_t path[][VERTEX_NUMBER])
 {
     vertex_t i, j, k;
 

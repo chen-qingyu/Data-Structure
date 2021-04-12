@@ -1,5 +1,13 @@
 #include "BinarySearchTree.h"
 
+/*******************************
+Helper functions implementation.
+*******************************/
+
+/*******************************
+Interface functions implementation.
+*******************************/
+
 tree_t CreateTree(void)
 {
     tree_t tree = (tree_t)malloc(sizeof(struct tree));

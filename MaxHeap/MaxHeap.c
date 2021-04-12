@@ -1,5 +1,13 @@
 #include "MaxHeap.h"
 
+/*******************************
+Helper functions implementation.
+*******************************/
+
+/*******************************
+Interface functions implementation.
+*******************************/
+
 heap_t CreateHeap(void)
 {
     heap_t heap = (heap_t)malloc(sizeof(struct heap));
@@ -27,12 +35,12 @@ void DestroyHeap(heap_t heap)
     }
 }
 
-bool IsFull(heap_t heap)
+bool IsFull(const heap_t heap)
 {
     return heap->size == heap->capacity;
 }
 
-bool IsEmpty(heap_t heap)
+bool IsEmpty(const heap_t heap)
 {
     return heap->size == 0;
 }

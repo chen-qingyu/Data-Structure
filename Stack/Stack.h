@@ -4,12 +4,12 @@
 操作集：栈 stack 属于 stack_t ，元素 data 属于 item_t ，基本操作有：
     1. stack_t CreateStack(void)
     2. void DestroyStack(stack_t stack)
-    3. int GetLength(stack_t stack)
-    4. bool IsFull(stack_t stack)
-    5. bool IsEmpty(stack_t stack)
+    3. int GetLength(const stack_t stack)
+    4. bool IsFull(const stack_t stack)
+    5. bool IsEmpty(const stack_t stack)
     6. void Push(stack_t stack, item_t data)
     7. item_t Pop(stack_t stack)
-    8. item_t Top(stack_t stack)
+    8. item_t Top(const stack_t stack)
 */
 
 #ifndef STACK_H
@@ -47,21 +47,21 @@ void DestroyStack(stack_t stack);
   Parameter:      一个指向栈的指针 stack
   Return:         栈长度
 *************************************************/
-int GetLength(stack_t stack);
+int GetLength(const stack_t stack);
 
 /*************************************************
   Description:    判断栈 stack 是否已满
   Parameter:      一个指向栈的指针 stack
   Return:         如果栈已满则返回 true ，否则返回 false
 *************************************************/
-bool IsFull(stack_t stack);
+bool IsFull(const stack_t stack);
 
 /*************************************************
   Description:    判断栈 stack 是否已空
   Parameter:      一个指向栈的指针 stack
   Return:         如果栈已空则返回 true ，否则返回 false
 *************************************************/
-bool IsEmpty(stack_t stack);
+bool IsEmpty(const stack_t stack);
 
 /*************************************************
   Description:    入栈，将元素 data 压入到栈 stack 的顶部
@@ -83,6 +83,6 @@ item_t Pop(stack_t stack);
   Parameter:      一个指向栈的指针 stack
   Return:         栈顶元素
 *************************************************/
-item_t Top(stack_t stack);
+item_t Top(const stack_t stack);
 
 #endif
