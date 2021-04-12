@@ -5,22 +5,25 @@ int main(void)
     heap_t heap = CreateHeap();
 
     printf("Is the heap empty? %s\n", IsEmpty(heap) ? "Yes" : "No");
+    printf("\n");
 
-    printf("Insert data: 1, 2.\n");
+    printf("Insert data: 1, 2, 3.\n");
     Insert(heap, 1);
     Insert(heap, 2);
+    Insert(heap, 3);
+    printf("\n");
 
     printf("Is the heap empty? %s\n", IsEmpty(heap) ? "Yes" : "No");
-
-    printf("Build heap.\n");
-    BuildMaxHeap(heap);
+    printf("\n");
 
     printf("Delete three items.\n");
     printf("The data is %d.\n", Delete(heap));
     printf("The data is %d.\n", Delete(heap));
     printf("The data is %d.\n", Delete(heap));
+    printf("\n");
 
     printf("Is the heap empty? %s\n", IsEmpty(heap) ? "Yes" : "No");
+    printf("\n");
 
     DestroyHeap(heap);
     printf("Destroy heap...\n");

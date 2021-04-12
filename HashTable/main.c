@@ -9,7 +9,8 @@ int main(void)
     Insert(table, "bbb", 2);
     Insert(table, "ccc", 3);
     Insert(table, "ddd", 4);
-    printf("Inserted.\n\n");
+    printf("Inserted.\n");
+    printf("\n");
 
     value_t a = Get(table, "aaa");
     printf("\"aaa\": %d\n", a);

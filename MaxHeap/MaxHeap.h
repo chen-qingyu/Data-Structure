@@ -8,7 +8,6 @@
     4. bool IsEmpty(const heap_t heap)
     5. void Insert(heap_t heap, item_t data)
     6. item_t Delete(heap_t heap)
-    7. void BuildMaxHeap(heap_t heap)
 */
 
 #ifndef MAX_HEAP_H
@@ -78,12 +77,5 @@ void Insert(heap_t heap, item_t data);
   Return:         堆顶元素
 *************************************************/
 item_t Delete(heap_t heap);
-
-/*************************************************
-  Description:    构建最大堆 heap
-  Parameter:      一个指向堆的指针 heap
-  Return:         堆顶元素
-*************************************************/
-void BuildMaxHeap(heap_t heap);
 
 #endif

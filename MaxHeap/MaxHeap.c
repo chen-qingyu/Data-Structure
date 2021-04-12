@@ -100,31 +100,3 @@ item_t Delete(heap_t heap)
 
     return maxItem;
 }
-
-void BuildMaxHeap(heap_t heap)
-{
-    int parent, child;
-    item_t tmp;
-
-    for (int i = heap->size / 2; i > 0; i--)
-    {
-        tmp = heap->data[i];
-        for (parent = i; parent * 2 <= heap->size; parent = child)
-        {
-            child = parent * 2;
-            if ((child != heap->size) && (heap->data[child] < heap->data[child + 1]))
-            {
-                child++;
-            }
-            if (tmp >= heap->data[child])
-            {
-                break;
-            }
-            else
-            {
-                heap->data[parent] = heap->data[child];
-            }
-        }
-        heap->data[parent] = tmp;
-    }
-}
