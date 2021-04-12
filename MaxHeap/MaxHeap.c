@@ -11,6 +11,11 @@ Interface functions implementation.
 heap_t CreateHeap(void)
 {
     heap_t heap = (heap_t)malloc(sizeof(struct heap));
+    if (heap == NULL)
+    {
+        fprintf(stderr, "ERROR: There was not enough memory.\n");
+        exit(-2);
+    }
     heap->data = (item_t *)malloc((HEAP_CAPACITY + 1) * sizeof(item_t));
     if (heap->data == NULL)
     {

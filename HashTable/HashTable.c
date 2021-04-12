@@ -78,6 +78,7 @@ void DestroyTable(table_t table)
             if (table[i].key)
             {
                 free(table[i].key);
+                table[i].key = NULL;
             }
         }
         free(table);

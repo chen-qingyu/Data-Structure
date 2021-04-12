@@ -16,16 +16,16 @@ static void CleanVisitedFlag(void)
 
 static void _DFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V))
 {
-    vertex_t V1, V2;
+    vertex_t V1;
 
     pVisit(startV);
     visited[startV] = true;
 
-    for (V2 = 0; V2 < G->vertexNum; V2++)
+    for (V1 = 0; V1 < G->vertexNum; V1++)
     {
-        if (IsAdjacent(G, startV, V2) && !visited[V2])
+        if (IsAdjacent(G, startV, V1) && !visited[V1])
         {
-            _DFS(G, V2, pVisit);
+            _DFS(G, V1, pVisit);
         }
     }
 }

@@ -23,6 +23,7 @@ int main(void)
     printf("Is the heap empty? %s\n", IsEmpty(heap) ? "Yes" : "No");
 
     DestroyHeap(heap);
+    printf("Destroy heap...\n");
 
     return 0;
 }

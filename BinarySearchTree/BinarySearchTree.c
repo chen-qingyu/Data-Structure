@@ -157,6 +157,11 @@ tree_t Insert(tree_t tree, item_t data)
     if (!tree)
     {
         tree = (tree_t)malloc(sizeof(struct tree));
+        if (tree == NULL)
+        {
+            fprintf(stderr, "ERROR: There was not enough memory.\n");
+            exit(-2);
+        }
         tree->data = data;
         tree->left = NULL;
         tree->right = NULL;
