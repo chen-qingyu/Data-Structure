@@ -125,6 +125,7 @@ void BFS(graph_t G, vertex_t startV, void (*pVisit)(vertex_t V))
             }
         }
     }
+    DestroyQueue(Q);
 }
 
 bool Dijkstra(const graph_t G, edge_t dist[], vertex_t path[], vertex_t startV)
