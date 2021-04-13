@@ -92,7 +92,7 @@ void Traversal(tree_t tree, traversal_t type, void (*pTrav)(item_t data))
             }
             default:
             {
-                printf("Error type!\n");
+                fprintf(stderr, "Error type!\n");
                 break;
             }
         }
@@ -187,7 +187,7 @@ tree_t Delete(tree_t tree, item_t data)
 
     if (!tree)
     {
-        printf("Error: There was no item %d", data);
+        fprintf(stderr, "Error: There was no item %d.\n", data);
     }
     else
     {
